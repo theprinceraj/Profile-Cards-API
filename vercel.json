@@ -9,7 +9,7 @@
     "routes": [
       {
         "src": "/api/profile/(.*)",
-        "dest": "src/routes/profile.js"
+        "dest": "src/app.js"
       }
     ]
   }
