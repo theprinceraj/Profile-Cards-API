@@ -1,8 +1,0 @@
-{
-  "routes": [
-    {
-      "src": "/api/profile",
-      "dest": "/api/profileController.js"
-    }
-  ]
-}
