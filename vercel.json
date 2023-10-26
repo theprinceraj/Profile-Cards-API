@@ -9,11 +9,11 @@
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "src/app.js"
+        "dest": "app.js"
       },
       {
         "src":"/api/(.*)",
-        "dest":"src/routes/profile.js"
+        "dest":"routes/profile.js"
       }
     ]
   }
