@@ -3,7 +3,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Define your API routes
-app.use('/', require('./routes/profile'));
+app.use('/api', require('./routes/profile'));
 
 app.use('/test', (req, res) => {
     res.send("HI!");
