@@ -8,7 +8,7 @@ const fs = require('fs');
  */
 async function generateProfileCard(imageLink, name, location, title, socialMedia, socialMediaUsername, skills) {
     try {
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({ headless: "new" });
         const page = await browser.newPage();
 
         // const htmlCode = ;
@@ -25,7 +25,7 @@ async function generateProfileCard(imageLink, name, location, title, socialMedia
 
         await page.setContent(customizedHtml);
         await page.addStyleTag({ path: 'public/style.css' });
-        await page.setViewport({ width: 350, height: 450 , deviceScaleFactor: 2 });
+        await page.setViewport({ width: 350, height: 450, deviceScaleFactor: 2 });
 
         const imageBuffer = await page.screenshot();
 
