@@ -1,10 +1,9 @@
 const express = require('express');
 const app = express();
-// const cors = require('cors');
 const port = process.env.PORT || 3000;
 
 // Define your API routes
-app.use('/api', require('./routes/profile'));
+app.use('/api', require('./src/routes/profile'));
 
 app.get('/', (req, res) => {
     res.send("Yea, I am here!");
