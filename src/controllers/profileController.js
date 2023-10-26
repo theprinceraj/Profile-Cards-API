@@ -3,7 +3,7 @@ const fs = require('fs');
 
 /**
  * Asynchronously generates a profile card image using Puppeteer.
- *
+ * 
  * @return {Buffer} The image buffer of the generated profile card.
  */
 async function generateProfileCard(imageLink, name, location, title, socialMedia, socialMediaUsername, skills) {
