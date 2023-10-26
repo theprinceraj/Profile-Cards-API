@@ -1,15 +1,10 @@
 const express = require('express');
 const app = express();
+// const cors = require('cors');
 const port = process.env.PORT || 3000;
 
 // Define your API routes
 app.use('/api', require('./routes/profile'));
-app.get('/direct-api', (req, res) => {
-    res.send('API is running.');
-})
-app.use('/test', (req, res) => {
-    res.send("HI!");
-})
 
 // Start the server
 app.listen(port, () => {
