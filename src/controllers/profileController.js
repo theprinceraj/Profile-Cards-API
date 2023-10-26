@@ -14,7 +14,7 @@ async function generateProfileCard(imageLink, name, location, title, socialMedia
         // const htmlCode = ;
 
         // Replace placeholders in the HTML template with the provided values
-        const customizedHtml = fs.readFileSync('public/index.html', 'utf-8')
+        const customizedHtml = fs.readFileSync('normal/index.html', 'utf-8')
             .replace('{{imageLink}}', imageLink)
             .replace('{{name}}', name)
             .replace('{{location}}', location)
@@ -24,7 +24,7 @@ async function generateProfileCard(imageLink, name, location, title, socialMedia
             .replace('{{socialMediaUsername}}', socialMediaUsername)
 
         await page.setContent(customizedHtml);
-        await page.addStyleTag({ path: 'public/style.css' });
+        await page.addStyleTag({ path: 'normal/style.css' });
         await page.setViewport({ width: 350, height: 450 , deviceScaleFactor: 2 });
 
         const imageBuffer = await page.screenshot();
