@@ -5,6 +5,10 @@ const port = process.env.PORT || 3000;
 // Define your API routes
 app.use('/', require('./routes/profile'));
 
+app.use('/test', (req, res) => {
+    res.send("HI!");
+})
+
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
