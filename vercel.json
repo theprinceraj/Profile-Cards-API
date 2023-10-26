@@ -2,15 +2,14 @@
     "version": 2,
     "builds": [
       {
-        "src": "src/index.js",
+        "src": "index.js",
         "use": "@now/node"
       }
     ],
     "routes": [
       {
-        "src": "/api/profile/(.*)",
+        "src": "/(.*)",
         "dest": "src/app.js"
       }
     ]
   }
-  
