@@ -26,7 +26,7 @@ This will return an image of a profile card with the provided information.
 
 ## Customization
 
-You can customize the appearance of the profile card by modifying the HTML and CSS templates located in the `public` directory. Adjust fonts, colors, and layouts to suit your branding or design preferences.
+You can customize the appearance of the profile card by modifying the HTML and CSS templates located in the `template` directory. Adjust fonts, colors, and layouts to suit your branding or design preferences.
 
 ## Dependencies
 
