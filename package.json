@@ -4,7 +4,8 @@
   "description": "An open-source API that returns image of a profile card based on the information provided.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./api/index.js"
   },
   "keywords": [],
   "author": "",
