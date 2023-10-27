@@ -8,7 +8,7 @@
     "start": "node ./api/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "theprinceraj",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
