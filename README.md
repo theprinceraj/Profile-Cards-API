@@ -1,6 +1,6 @@
 # Profile Cards API
 
-![Profile Card Example](https://profile-cards-api.vercel.app/api/profile?name=John%20Doe&location=New%20York&socialMedia=GitHub&socialMediaUsername=johndoe&title=Web%20Developer&skills=HTML,CSS,JavaScript&imageLink=https://example.com/johndoe.png)
+![Profile Card Example](https://profile-cards-api.vercel.app/api/profile?name=John%20Doe&location=New%20York&socialMedia=GitHub&socialMediaUsername=johndoe&title=Web%20Developer&skills=HTML,CSS,JavaScript&imageLink=https://example.com/johndoe.png) <--- This link will work soon...
 
 The Profile Cards API is an open-source service that generates customizable profile card images based on the information provided via API requests. These profile cards can be used in various applications, including GitHub profiles, personal websites, and more.
 
