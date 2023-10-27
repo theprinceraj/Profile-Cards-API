@@ -44,5 +44,3 @@ This project is open-source and available under the [MIT License](LICENSE).
 ---
 
 **Note:** Ensure that you have the necessary environment variables configured when deploying this project, especially in serverless environments.
-
-For more information, please refer to the [documentation](https://github.com/your-repo-link) or [open an issue](https://github.com/your-repo-link/issues) if you encounter any problems or have questions.
