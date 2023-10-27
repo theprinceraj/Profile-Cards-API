@@ -1,5 +1,6 @@
-const { createCanvas, loadImage, createPNGStream } = require('@napi-rs/canvas');
+const { createCanvas, loadImage } = require('@napi-rs/canvas');
 const fetch = require('node-fetch');
+const { join } = require('path');
 
 /**
  * Asynchronously generates a profile card image using Puppeteer.
@@ -8,13 +9,38 @@ const fetch = require('node-fetch');
  */
 async function generateProfileCard(image, name, location, title, socialMedia, socialMediaUsername, skills) {
     try {
-        // Create a canvas
-        const canvas = createCanvas(350, 464); // Adjust dimensions as needed
+        const canvas = createCanvas(350, 464); 
         const context = canvas.getContext('2d');
 
         // Draw background
-        context.fillStyle = '#231E39';
-        context.fillRect(0, 0, canvas.width, canvas.height);
+        const bgImage = await loadImage(join(__dirname, '../../template/Design1/props/BaseImage_Design1.png'));
+        context.drawImage(bgImage, 0, 0, 350, 464);
+
+        context.beginPath();
+        context.strokeStyle = '#231e39';
+        context.arc(175, 125, 100, 0, Math.PI*2);
+        context.closePath();
+        context.stroke();
+
+        // Draw text
+        context.fillStyle = '#B3B8CD';
+        context.font = '19px Arial';
+        context.fillText(name, 125, 250);
+        context.font = '11px Arial';
+        context.fillText(location, 140, 270);
+        context.font = '14px Arial';
+        context.fillText(title, 50, 360);
+        context.font = '13px Arial';
+        context.fillText(socialMedia, 50, 390);
+        context.fillText(socialMediaUsername, 50, 420);
+
+        // Draw skills
+        context.fillStyle = '#B3B8CD';
+        context.font = '14px Montserrat';
+        const skillsList = skills.split(',');
+        skillsList.forEach((skill, index) => {
+            context.fillText(skill, 100, 360 + index * 20); // Adjust the position as needed
+        });
 
         // Create a clipping path to make the image a circle
         context.beginPath();
@@ -25,29 +51,6 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         // Draw the image inside the circle
         context.drawImage(image, 100, 50, 150, 150);
 
-        // Reset the clipping path
-        context.restore(); // Restore previous canvas state
-
-        // Draw text
-        context.fillStyle = '#B3B8CD';
-        context.font = '19px Montserrat';
-        context.fillText(name, 50, 300);
-        context.font = '11px Montserrat';
-        context.fillText(location, 50, 330); // Adjust the position as needed
-        context.font = '14px Montserrat';
-        context.fillText(title, 50, 360); // Adjust the position as needed
-        context.font = '13px Montserrat';
-        context.fillText(socialMedia, 50, 390); // Adjust the position as needed
-        context.fillText(socialMediaUsername, 50, 420); // Adjust the position as needed
-
-        // Draw skills
-        context.fillStyle = '#B3B8CD';
-        context.font = '14px Montserrat';
-        const skillsList = skills.split(',');
-        skillsList.forEach((skill, index) => {
-            context.fillText(skill, 100, 360 + index * 20); // Adjust the position as needed
-        });
-
         const finalOutput = canvas.encode('jpeg');
         return finalOutput;
     } catch (error) {
@@ -55,8 +58,6 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         return null;
     }
 }
-
-
 
 /**
  * Asynchronously retrieves a profile card image and sends it as a response.
