@@ -8,11 +8,12 @@ const fs = require('fs');
  */
 async function generateProfileCard(imageLink, name, location, title, socialMedia, socialMediaUsername, skills) {
     try {
-        const browser = await puppeteer.launch({ headless: "new" });
+        const browser = await puppeteer.launch({
+            headless: "new",
+            args: ['--no-sandbox', '--disable-setuid-sandbox']
+        });
+
         const page = await browser.newPage();
-
-        // const htmlCode = ;
-
         // Replace placeholders in the HTML template with the provided values
         const customizedHtml = fs.readFileSync('template/index.html', 'utf-8')
             .replace('{{imageLink}}', imageLink)
@@ -24,6 +25,7 @@ async function generateProfileCard(imageLink, name, location, title, socialMedia
             .replace('{{socialMediaUsername}}', socialMediaUsername)
 
         await page.setContent(customizedHtml);
+        await page.addStyleTag({ url: 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap' });
         await page.addStyleTag({ path: 'template/style.css' });
         await page.setViewport({ width: 350, height: 450, deviceScaleFactor: 2 });
 
