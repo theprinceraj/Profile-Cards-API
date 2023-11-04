@@ -12,8 +12,10 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         const context = canvas.getContext('2d');
 
         // Draw background
-        const bgImage = await loadImage(join(__dirname, '../../template/Design1/props/BaseImage_Design1.png'));
-        context.drawImage(bgImage, 0, 0, 350, 464);
+        context.fillStyle = '#28223F';
+        context.fillRect(0, 0, 350, 464);
+        // const bgImage = await loadImage(join(__dirname, '../../template/Design1/props/BaseImage_Design1.png'));
+        // context.drawImage(bgImage, 0, 0, 350, 464);
 
         context.beginPath();
         context.strokeStyle = '#231e39';
