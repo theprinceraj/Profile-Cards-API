@@ -31,7 +31,9 @@ You can customize the appearance of the profile card by modifying the HTML and C
 ## Dependencies
 
 - Express.js: The web server framework for handling API requests.
-- Puppeteer: Used to generate profile card images.
+- canvas: Used to generate profile card images.
+- @napi-rs/canvas: Used to generate profile card images.
+- node-fetch
 
 ## Contributing
 
