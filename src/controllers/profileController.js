@@ -1,4 +1,4 @@
-const { createCanvas, loadImage } = require('@napi-rs/canvas');
+const { createCanvas } = require('@napi-rs/canvas');
 const { fetchAndLoadImage } = require('../utilities/fetch-load-image.js');
 /**
  * Asynchronously generates a profile card image using Canvas.
