@@ -12,7 +12,6 @@
   "author": "theprinceraj",
   "license": "ISC",
   "dependencies": {
-    "@napi-rs/canvas": "^0.1.44",
     "canvas": "^2.11.2",
     "express": "^4.18.2",
     "node-fetch": "^2.7.0"

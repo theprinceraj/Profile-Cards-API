@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 const { join } = require('path');
 
 /**
- * Asynchronously generates a profile card image using Puppeteer.
+ * Asynchronously generates a profile card image using Canvas.
  * 
  * @return {Buffer} The image buffer of the generated profile card.
  */
@@ -21,7 +21,7 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         context.arc(175, 125, 100, 0, Math.PI*2);
         context.closePath();
         context.stroke();
-
+    
         // Draw text
         context.fillStyle = '#B3B8CD';
         context.font = '19px Arial';
@@ -75,14 +75,7 @@ async function getProfileCard(req, res) {
             return;
         }
 
-        const imageResponse = await fetch(imageLink);
-        if (!imageResponse.ok) {
-            res.status(500).send('Failed to fetch the image from the provided URL.');
-            return;
-        }
-
-        const imageBuffer = await imageResponse.buffer();
-        const fetchedImage = await loadImage(imageBuffer);
+        const fetchedImage = await fetchAndLoadImage(imageLink);
 
         const profileCardImageBuffer = await generateProfileCard(
             fetchedImage,
@@ -106,7 +99,23 @@ async function getProfileCard(req, res) {
     }
 }
 
-// export getProfileCard function using ES6 syntax
+async function fetchAndLoadImage(url) {
+    try {
+        const response = await fetch(url, {
+            headers: {
+                Accept: 'image/jpeg, image/png, image/webp',
+            },
+        });
+        const blob = await response.blob();
+        return await loadImage(blob);
+    } catch (error) {
+        console.error('Error fetching or loading the image:', error);
+        return null;
+    }
+}
+
+
+// export getProfileCard function
 module.exports = {
     getProfileCard
 }
