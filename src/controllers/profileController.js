@@ -1,5 +1,4 @@
 const { createCanvas, loadImage } = require('@napi-rs/canvas');
-const { join } = require('path');
 const { fetchAndLoadImage } = require('../utilities/fetch-load-image.js');
 /**
  * Asynchronously generates a profile card image using Canvas.
@@ -14,23 +13,22 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         // Draw background
         context.fillStyle = '#28223F';
         context.fillRect(0, 0, 350, 464);
-        // const bgImage = await loadImage(join(__dirname, '../../template/Design1/props/BaseImage_Design1.png'));
-        // context.drawImage(bgImage, 0, 0, 350, 464);
 
         context.beginPath();
         context.strokeStyle = '#231e39';
-        context.arc(175, 125, 100, 0, Math.PI * 2);
-        context.closePath();
+        context.arc(175, 125, 200, 0, Math.PI * 2);
         context.stroke();
+        context.closePath();
 
         // Draw text
         context.fillStyle = '#B3B8CD';
         context.font = '19px Arial';
-        context.fillText(name, 125, 250);
+        context.textAlign = 'center';
+        context.fillText(name, 175, 250);
         context.font = '11px Arial';
-        context.fillText(location, 140, 270);
+        context.fillText(location.toUppercase(), 175, 270);
         context.font = '14px Arial';
-        context.fillText(title, 50, 360);
+        context.fillText(title, 175, 295);
         context.font = '13px Arial';
         context.fillText(socialMedia, 50, 390);
         context.fillText(socialMediaUsername, 50, 420);
