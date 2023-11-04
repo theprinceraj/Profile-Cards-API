@@ -1,7 +1,6 @@
 const { createCanvas, loadImage } = require('@napi-rs/canvas');
-const fetch = require('node-fetch');
 const { join } = require('path');
-
+const { fetchAndLoadImage } = require('../utilities/fetch-load-image.js');
 /**
  * Asynchronously generates a profile card image using Canvas.
  * 
@@ -9,7 +8,7 @@ const { join } = require('path');
  */
 async function generateProfileCard(image, name, location, title, socialMedia, socialMediaUsername, skills) {
     try {
-        const canvas = createCanvas(350, 464); 
+        const canvas = createCanvas(350, 464);
         const context = canvas.getContext('2d');
 
         // Draw background
@@ -18,10 +17,10 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
 
         context.beginPath();
         context.strokeStyle = '#231e39';
-        context.arc(175, 125, 100, 0, Math.PI*2);
+        context.arc(175, 125, 100, 0, Math.PI * 2);
         context.closePath();
         context.stroke();
-    
+
         // Draw text
         context.fillStyle = '#B3B8CD';
         context.font = '19px Arial';
@@ -51,7 +50,7 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         // Draw the image inside the circle
         context.drawImage(image, 100, 50, 150, 150);
 
-        const finalOutput = canvas.encode('jpeg');
+        const finalOutput = canvas.toBuffer('image/jpeg');
         return finalOutput;
     } catch (error) {
         console.error('Error generating the profile card image:', error);
@@ -98,22 +97,6 @@ async function getProfileCard(req, res) {
         res.status(500).send('Internal Server Error');
     }
 }
-
-async function fetchAndLoadImage(url) {
-    try {
-        const response = await fetch(url, {
-            headers: {
-                Accept: 'image/jpeg, image/png, image/webp',
-            },
-        });
-        const blob = await response.blob();
-        return await loadImage(blob);
-    } catch (error) {
-        console.error('Error fetching or loading the image:', error);
-        return null;
-    }
-}
-
 
 // export getProfileCard function
 module.exports = {
