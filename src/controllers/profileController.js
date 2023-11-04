@@ -7,16 +7,16 @@ const { fetchAndLoadImage } = require('../utilities/fetch-load-image.js');
  */
 async function generateProfileCard(image, name, location, title, socialMedia, socialMediaUsername, skills) {
     try {
-        const canvas = createCanvas(350, 464);
+        const canvas = createCanvas(350, 500);
         const context = canvas.getContext('2d');
 
         // Draw background
         context.fillStyle = '#28223F';
-        context.fillRect(0, 0, 350, 464);
+        context.fillRect(0, 0, 350, 500);
 
         context.beginPath();
-        context.strokeStyle = '#231e39';
-        context.arc(175, 125, 200, 0, Math.PI * 2);
+        context.strokeStyle = '#00ffff';
+        context.arc(175, 125, 85, 0, Math.PI * 2);
         context.stroke();
         context.closePath();
 
@@ -24,14 +24,14 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         context.fillStyle = '#B3B8CD';
         context.font = '19px Arial';
         context.textAlign = 'center';
-        context.fillText(name, 175, 250);
+        context.fillText(name, 175, 250); // Name
         context.font = '11px Arial';
-        context.fillText(location.toUppercase(), 175, 270);
+        context.fillText(location.toUpperCase(), 175, 270); // Location
         context.font = '14px Arial';
-        context.fillText(title, 175, 295);
+        context.fillText(title, 175, 295); // Title
         context.font = '13px Arial';
-        context.fillText(socialMedia, 50, 390);
-        context.fillText(socialMediaUsername, 50, 420);
+        context.fillText(socialMedia, 50, 390); // Social Media
+        context.fillText(socialMediaUsername, 50, 420); // Social Media Username
 
         // Draw skills
         context.fillStyle = '#B3B8CD';
@@ -50,7 +50,7 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         // Draw the image inside the circle
         context.drawImage(image, 100, 50, 150, 150);
 
-        const finalOutput = canvas.toBuffer('image/jpeg');
+        const finalOutput = canvas.toBuffer('image/png');
         return finalOutput;
     } catch (error) {
         console.error('Error generating the profile card image:', error);
