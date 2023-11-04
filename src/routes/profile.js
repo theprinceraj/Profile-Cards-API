@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const profileController = require('../controllers/profileController');
+const profileController = require('../controllers/profileController.js');
 
 // Define a route to handle the root path
 router.get('/', (req, res) => {
