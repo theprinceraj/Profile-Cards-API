@@ -1,4 +1,4 @@
-const { createCanvas } = require('@napi-rs/canvas');
+const { createCanvas, GlobalFonts } = require('@napi-rs/canvas');
 const { fetchAndLoadImage } = require('../utilities/fetch-load-image.js');
 /**
  * Asynchronously generates a profile card image using Canvas.
@@ -6,10 +6,13 @@ const { fetchAndLoadImage } = require('../utilities/fetch-load-image.js');
  * @return {Buffer} The image buffer of the generated profile card.
  */
 async function generateProfileCard(image, name, location, title, socialMedia, socialMediaUsername, skills) {
+    GlobalFonts.registerFromPath('template/Design1/Montserrat-SemiBold.ttf', 'Montserrat-SemiBold');
+    GlobalFonts.registerFromPath('template/Design1/Montserrat-Bold.ttf', 'Montserrat-Bold');
     try {
         const canvas = createCanvas(350, 500);
         const context = canvas.getContext('2d');
 
+        
         // Draw background
         context.fillStyle = '#28223F';
         context.fillRect(0, 0, 350, 500);
@@ -19,23 +22,23 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         context.arc(175, 125, 85, 0, Math.PI * 2);
         context.stroke();
         context.closePath();
-
+        
         // Draw text
         context.fillStyle = '#B3B8CD';
-        context.font = '19px Arial';
+        context.font = '19px Montserrat-Bold';
         context.textAlign = 'center';
         context.fillText(name, 175, 250); // Name
-        context.font = '11px Arial';
+        context.font = '11px Montserrat-SemiBold';
         context.fillText(location.toUpperCase(), 175, 270); // Location
-        context.font = '14px Arial';
+        context.font = '14px Montserrat-SemiBold';
         context.fillText(title, 175, 295); // Title
-        context.font = '13px Arial';
+        context.font = '13px Montserrat-SemiBold';
         context.fillText(socialMedia, 50, 390); // Social Media
         context.fillText(socialMediaUsername, 50, 420); // Social Media Username
 
         // Draw skills
         context.fillStyle = '#B3B8CD';
-        context.font = '14px Montserrat';
+        context.font = '14px Montserrat-SemiBold';
         const skillsList = skills.split(',');
         skillsList.forEach((skill, index) => {
             context.fillText(skill, 100, 360 + index * 20); // Adjust the position as needed
