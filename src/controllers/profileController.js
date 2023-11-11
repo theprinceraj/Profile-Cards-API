@@ -37,12 +37,12 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         // context.fillText(socialMediaUsername, 50, 420); // Social Media Username
 
         // Draw skills
-        context.fillStyle = '#B3B8CD';
-        context.font = '14px Montserrat-SemiBold';
-        const skillsList = skills.split(',');
-        skillsList.forEach((skill, index) => {
-            context.fillText(skill, 100, 360 + index * 20); // Adjust the position as needed
-        });
+        // context.fillStyle = '#B3B8CD';
+        // context.font = '14px Montserrat-SemiBold';
+        // const skillsList = skills.split(',');
+        // skillsList.forEach((skill, index) => {
+        //     context.fillText(skill, 100, 360 + index * 20); // Adjust the position as needed
+        // });
 
         // Create a clipping path to make the image a circle
         context.beginPath();
