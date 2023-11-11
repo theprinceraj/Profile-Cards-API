@@ -16,6 +16,8 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         // Draw background
         context.fillStyle = '#28223F';
         context.fillRect(0, 0, 350, 500);
+        context.fillStyle = '#1F1A36';
+        context.fillRect(0, 375, 350, 125);
 
         context.beginPath();
         context.strokeStyle = '#00ffff';
