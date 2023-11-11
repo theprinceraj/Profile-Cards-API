@@ -25,16 +25,16 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         
         // Draw text
         context.fillStyle = '#B3B8CD';
-        context.font = '19px Montserrat-Bold';
+        context.font = '19px Montserrat-SemiBold.ttf';
         context.textAlign = 'center';
         context.fillText(name, 175, 250); // Name
         context.font = '11px Montserrat-SemiBold';
         context.fillText(location.toUpperCase(), 175, 270); // Location
-        context.font = '14px Montserrat-SemiBold';
+        context.font = '12px Montserrat-SemiBold';
         context.fillText(title, 175, 295); // Title
-        context.font = '13px Montserrat-SemiBold';
-        context.fillText(socialMedia, 50, 390); // Social Media
-        context.fillText(socialMediaUsername, 50, 420); // Social Media Username
+        // context.font = '13px Montserrat-SemiBold';
+        // context.fillText(socialMedia, 50, 390); // Social Media
+        // context.fillText(socialMediaUsername, 50, 420); // Social Media Username
 
         // Draw skills
         context.fillStyle = '#B3B8CD';
