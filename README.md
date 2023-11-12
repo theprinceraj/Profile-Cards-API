@@ -1,6 +1,6 @@
 # Profile Cards API
 
-![Profile Card Example](https://profile-cards-api.vercel.app/api/profile?name=John%20Doe&location=New%20York&socialMedia=GitHub&socialMediaUsername=johndoe&title=Web%20Developer&skills=HTML,CSS,JavaScript&imageLink=https://example.com/johndoe.png) <--- This link will work soon...
+![Profile Card Example](https://profile-cards-api.vercel.app/api/profile?name=Prince%20Raj&location=India&socialMedia=Github&socialMediaUsername=theprinceraj&title=Web%20Developer&skills=HTML,CSS,JavaScript&imageLink=https://cdn.discordapp.com/avatars/564327207133249536/2a80d088463a3751c63ebb0b0b64f0e9.png?size=1024)
 
 The Profile Cards API is an open-source service that generates customizable profile card images based on the information provided via API requests. These profile cards can be used in various applications, including GitHub profiles, personal websites, and more.
 
@@ -19,19 +19,21 @@ To generate a profile card, make a GET request to the API with the following que
 Example API request:
 
 ```plaintext
-GET https://profile-cards-api.vercel.app/api/profile?name=John%20Doe&location=New%20York&socialMedia=GitHub&socialMediaUsername=johndoe&title=Web%20Developer&skills=HTML,CSS,JavaScript&imageLink=https://example.com/johndoe.png
+GET https://profile-cards-api.vercel.app/api/profile?name=Prince%20Raj&location=India&socialMedia=Github&socialMediaUsername=theprinceraj&title=Web%20Developer&skills=HTML,CSS,JavaScript&imageLink=https://cdn.discordapp.com/avatars/564327207133249536/2a80d088463a3751c63ebb0b0b64f0e9.png?size=1024
 ```
 
 This will return an image of a profile card with the provided information.
 
 ## Customization
 
-You can customize the appearance of the profile card by modifying the HTML and CSS templates located in the `template` directory. Adjust fonts, colors, and layouts to suit your branding or design preferences.
+It does not support design customisation as of now but I plan to implement it sometime later. Contributions in this regard are most welcome.
 
 ## Dependencies
 
 - Express.js: The web server framework for handling API requests.
-- Puppeteer: Used to generate profile card images.
+- canvas: Used to generate profile card images.
+- @napi-rs/canvas: Used to generate profile card images.
+- node-fetch: Used to fetch the image from given link that is supposed to be displayed as your profile picture
 
 ## Contributing
 
