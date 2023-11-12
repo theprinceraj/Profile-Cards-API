@@ -26,14 +26,14 @@ This will return an image of a profile card with the provided information.
 
 ## Customization
 
-You can customize the appearance of the profile card by modifying the HTML and CSS templates located in the `template` directory. Adjust fonts, colors, and layouts to suit your branding or design preferences.
+It does not support design customisation as of now but I plan to implement it sometime later. Contributions in this regard are most welcome.
 
 ## Dependencies
 
 - Express.js: The web server framework for handling API requests.
 - canvas: Used to generate profile card images.
 - @napi-rs/canvas: Used to generate profile card images.
-- node-fetch
+- node-fetch: Used to fetch the image from given link that is supposed to be displayed as your profile picture
 
 ## Contributing
 
