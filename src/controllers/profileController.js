@@ -55,6 +55,12 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         // Draw the image inside the circle
         context.drawImage(image, 100, 50, 150, 150);
 
+       // Disable Anti-Aliasing
+       context.imageSmoothingEnabled = false;
+       // Use high-quality image interpolation
+       context.imageSmoothingQuality = 'high';
+
+
         const finalOutput = canvas.toBuffer('image/png');
         return finalOutput;
     } catch (error) {
