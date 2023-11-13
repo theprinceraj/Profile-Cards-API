@@ -12,7 +12,12 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         const canvas = createCanvas(350, 500);
         const context = canvas.getContext('2d');
 
-        
+
+        // Disable Anti-Aliasing
+        context.imageSmoothingEnabled = false;
+        // Use high-quality image interpolation
+        context.imageSmoothingQuality = 'high';
+
         // Draw background
         context.fillStyle = '#28223F';
         context.fillRect(0, 0, 350, 500);
@@ -24,7 +29,7 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         context.arc(175, 125, 85, 0, Math.PI * 2);
         context.stroke();
         context.closePath();
-        
+
         // Draw text
         context.fillStyle = '#B3B8CD';
         context.font = '19px Montserrat-SemiBold.ttf';
@@ -54,11 +59,6 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
 
         // Draw the image inside the circle
         context.drawImage(image, 100, 50, 150, 150);
-
-       // Disable Anti-Aliasing
-       context.imageSmoothingEnabled = false;
-       // Use high-quality image interpolation
-       context.imageSmoothingQuality = 'high';
 
 
         const finalOutput = canvas.toBuffer('image/png');
