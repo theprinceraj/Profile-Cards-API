@@ -65,7 +65,7 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         const finalOutput = canvas.toBuffer('image/png');
         return finalOutput;
     } catch (error) {
-        console.error('Error generating the profile card image:', error);
+        logError(error, { customMessage: "Source: try/catch block of generateProfileCard() function" });
         return null;
     }
 }
