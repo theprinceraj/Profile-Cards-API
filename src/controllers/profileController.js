@@ -1,5 +1,7 @@
 const { createCanvas, GlobalFonts } = require('@napi-rs/canvas');
 const { fetchAndLoadImage } = require('../utilities/fetch-load-image.js');
+const { logError } = require("../utilities/error-logger.js");
+
 /**
  * Asynchronously generates a profile card image using Canvas.
  * 
@@ -23,12 +25,6 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         context.fillRect(0, 0, 350, 500);
         context.fillStyle = '#1F1A36';
         context.fillRect(0, 375, 350, 125);
-
-        context.beginPath();
-        context.strokeStyle = '#00ffff';
-        context.arc(175, 125, 85, 0, Math.PI * 2);
-        context.stroke();
-        context.closePath();
 
         // Draw text
         context.fillStyle = '#B3B8CD';
@@ -56,9 +52,14 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         context.arc(175, 125, 75, 0, Math.PI * 2);
         context.closePath();
         context.clip();
-
         // Draw the image inside the circle
         context.drawImage(image, 100, 50, 150, 150);
+        // Drawing border around the image
+        context.beginPath();
+        context.strokeStyle = '#00ffff';
+        context.arc(175, 125, 85, 0, Math.PI * 2);
+        context.stroke();
+        context.closePath();
 
 
         const finalOutput = canvas.toBuffer('image/png');
@@ -80,8 +81,10 @@ async function getProfileCard(req, res) {
     try {
         const { imageLink, name, location, title, socialMedia, socialMediaUsername, skills } = req.query;
 
-        if (!imageLink || !name || !location || !title || !socialMedia || !socialMediaUsername || !skills) {
-            res.status(400).send('Invalid query parameters.');
+        const requiredParameters = ['imageLink', 'name', 'location', 'title', 'socialMedia', 'socialMediaUsername', 'skills'];
+        const missingParameters = requiredParameters.filter(parameter => !req.query[parameter]);
+        if (missingParameters.length > 0) {
+            res.status(400).send('Missing parameters: ' + missingParameters.join(', '));
             return;
         }
 
@@ -97,14 +100,14 @@ async function getProfileCard(req, res) {
             skills
         );
 
-        if (profileCardImageBuffer) {
+        if (profileCardImageBuffer && Buffer.isBuffer(profileCardImageBuffer)) {
             res.set('Content-Type', 'image/png');
             res.send(profileCardImageBuffer);
         } else {
-            res.status(500).send('Failed to generate the profile card image.');
+            res.status(500).send('Invalid or missing profile card image buffer.');
         }
     } catch (error) {
-        console.error('Error in getProfileCard controller:', error);
+        logError(error, { customMessage: "Source: try/catch block of getProfileCard() function" });
         res.status(500).send('Internal Server Error');
     }
 }
