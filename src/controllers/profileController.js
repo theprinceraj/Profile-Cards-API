@@ -47,6 +47,12 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         //     context.fillText(skill, 100, 360 + index * 20); // Adjust the position as needed
         // });
 
+        // Drawing border around the image
+        context.beginPath();
+        context.strokeStyle = '#00ffff';
+        context.arc(175, 125, 85, 0, Math.PI * 2);
+        context.stroke();
+        context.closePath();
         // Create a clipping path to make the image a circle
         context.beginPath();
         context.arc(175, 125, 75, 0, Math.PI * 2);
@@ -54,12 +60,6 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         context.clip();
         // Draw the image inside the circle
         context.drawImage(image, 100, 50, 150, 150);
-        // Drawing border around the image
-        context.beginPath();
-        context.strokeStyle = '#00ffff';
-        context.arc(175, 125, 85, 0, Math.PI * 2);
-        context.stroke();
-        context.closePath();
 
 
         const finalOutput = canvas.toBuffer('image/png');
