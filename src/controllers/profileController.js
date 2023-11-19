@@ -7,7 +7,7 @@ const { logError } = require("../utilities/error-logger.js");
  * 
  * @return {Buffer} The image buffer of the generated profile card.
  */
-async function generateProfileCard(image, name, location, title, socialMedia, socialMediaUsername, skills) {
+async function generateProfileCard(image, name, location, title) {
     GlobalFonts.registerFromPath('template/Design1/Montserrat-SemiBold.ttf', 'Montserrat-SemiBold');
     GlobalFonts.registerFromPath('template/Design1/Montserrat-Bold.ttf', 'Montserrat-Bold');
     try {
@@ -35,6 +35,12 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         context.fillText(location.toUpperCase(), 175, 270); // Location
         context.font = '12px Montserrat-SemiBold';
         context.fillText(title, 175, 295); // Title
+
+        // Draw a rectangular box filled with cyan color
+        context.fillStyle = '#03BFCB';
+        context.fillRect(40, canvas.height/2 + 50, 85, 35);
+
+
         // context.font = '13px Montserrat-SemiBold';
         // context.fillText(socialMedia, 50, 390); // Social Media
         // context.fillText(socialMediaUsername, 50, 420); // Social Media Username
@@ -79,9 +85,9 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
  */
 async function getProfileCard(req, res) {
     try {
-        const { imageLink, name, location, title, socialMedia, socialMediaUsername, skills } = req.query;
+        const { imageLink, name, location, title } = req.query;
 
-        const requiredParameters = ['imageLink', 'name', 'location', 'title', 'socialMedia', 'socialMediaUsername', 'skills'];
+        const requiredParameters = ['imageLink', 'name', 'location', 'title'];
         const missingParameters = requiredParameters.filter(parameter => !req.query[parameter]);
         if (missingParameters.length > 0) {
             res.status(400).send('Missing parameters: ' + missingParameters.join(', '));
@@ -94,10 +100,7 @@ async function getProfileCard(req, res) {
             fetchedImage,
             name,
             location,
-            title,
-            socialMedia,
-            socialMediaUsername,
-            skills
+            title
         );
 
         if (profileCardImageBuffer && Buffer.isBuffer(profileCardImageBuffer)) {

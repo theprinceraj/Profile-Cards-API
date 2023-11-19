@@ -16,6 +16,5 @@ app.listen(port, () => {
     console.log(`****************************`);
 });
 
-// Test URL: http://localhost:3000/api/profile?name=Prince%20Raj&location=India&socialMedia=Github&socialMediaUsername=theprinceraj&title=Web%20Developer&skills=HTML,CSS,JavaScript&imageLink=https://cdn.discordapp.com/avatars/564327207133249536/2a80d088463a3751c63ebb0b0b64f0e9.png
 
 module.exports = app;
