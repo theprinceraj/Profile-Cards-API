@@ -37,8 +37,8 @@ async function generateProfileCard(image, name, location, title) {
         context.fillText(title, 175, 295); // Title
 
         // Draw a rectangular box filled with cyan color
-        context.fillStyle = '#03BFCB';
-        context.fillRect(40, canvas.height/2 + 50, 85, 35);
+        // context.fillStyle = '#03BFCB';
+        // context.fillRect(40, canvas.height/2 + 50, 85, 35);
 
 
         // context.font = '13px Montserrat-SemiBold';
