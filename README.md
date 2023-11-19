@@ -10,16 +10,13 @@ To generate a profile card, make a GET request to the API with the following que
 
 - `name`: The name to be displayed on the profile card.
 - `location`: The user's location or city.
-- `socialMedia`: The social media platform (e.g., GitHub, Twitter).
-- `socialMediaUsername`: The username/handle on the social media platform.
 - `title`: The user's job title or description.
-- `skills`: A comma-separated list of skills.
 - `imageLink`: The URL of the user's profile picture.
 
 Example API request:
 
 ```plaintext
-GET https://profile-cards-api.vercel.app/api/profile?name=Prince%20Raj&location=India&socialMedia=Github&socialMediaUsername=theprinceraj&title=Web%20Developer&skills=HTML,CSS,JavaScript&imageLink=https://i.ibb.co/CmPRHxR/IMG-20231010-085955.jpg
+GET https://profile-cards-api.vercel.app/api/profile?name=Prince%20Raj&location=India&title=Web%20Developer&imageLink=https://i.ibb.co/CmPRHxR/IMG-20231010-085955.jpg
 ```
 
 This will return an image of a profile card with the provided information.
