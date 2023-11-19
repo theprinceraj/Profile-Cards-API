@@ -16,7 +16,7 @@ To generate a profile card, make a GET request to the API with the following que
 Example API request:
 
 ```plaintext
-GET https://profile-cards-api.vercel.app/api/profile?name=Prince%20Raj&location=India&title=Web%20Developer&imageLink=https://i.ibb.co/CmPRHxR/IMG-20231010-085955.jpg
+GET https://profile-cards-api.vercel.app/api/profile?name=Prince%20Raj&location=India&title=Web%20Developer&imageLink=https://images.unsplash.com/photo-1511367461989-f85a21fda167
 ```
 
 This will return an image of a profile card with the provided information.
