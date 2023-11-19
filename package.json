@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "start http://localhost:3000/api/profile?name=Prince%20Raj^&location=India^&socialMedia=Github^&socialMediaUsername=theprinceraj^&title=User%20interface%20designer%20and%20front-end%20developer^&skills=HTML,CSS,JavaScript^&imageLink=https://cdn.discordapp.com/avatars/564327207133249536/2a80d088463a3751c63ebb0b0b64f0e9.png?size=1024 & node ./api/index.js",
+    "start": "start http://localhost:3000/api/profile?name=Prince%20Raj^&location=India^&socialMedia=Github^&socialMediaUsername=theprinceraj^&title=User%20interface%20designer%20and%20front-end%20developer^&skills=HTML,CSS,JavaScript^&imageLink=https://i.ibb.co/CmPRHxR/IMG-20231010-085955.jpg & node ./api/index.js",
     "build": "npm i"
   },
   "keywords": [],
