@@ -32,9 +32,12 @@ It does not support design customisation as of now but I plan to implement it so
 - @napi-rs/canvas: Used to generate profile card images.
 - node-fetch: Used to fetch the image from given link that is supposed to be displayed as your profile picture
 
-## Contributing
+## Contributors
 
 Contributions to this project are welcome. Feel free to open issues or pull requests to suggest improvements or report bugs.
+
+Once we have contributors, we will list them down in this section. I hope we will have some soon! 🫡❤️
+
 
 ## License
 
