@@ -36,7 +36,7 @@ It does not support design customisation as of now but I plan to implement it so
 
 Contributions to this project are welcome. Feel free to open issues or pull requests to suggest improvements or report bugs.
 
-Once we have contributors, we will list them down in this section. I hope we will have some soon! 🫡❤️
+Once we have contributors, we will list them down in this section. I hope we will have some soon!❤️
 
 
 ## License
