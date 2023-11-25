@@ -12,11 +12,13 @@ To generate a profile card, make a GET request to the API with the following que
 - `location`: The user's location or city.
 - `title`: The user's job title or description.
 - `imageLink`: The URL of the user's profile picture.
+- `socialMedia`: The name of social media whose username you want to show
+- `socialMediaUsername`: The username of the previously specified social media
 
 Example API request:
 
 ```plaintext
-GET https://profile-cards-api.vercel.app/api/profile?name=Prince%20Raj&location=India&title=Web%20Developer&imageLink=https://images.unsplash.com/photo-1514501259756-f4b6fbeffa67
+GET https://profile-cards-api.vercel.app/api/profile?name=Prince%20Raj&location=India&title=Web%20Developer&imageLink=https://images.unsplash.com/photo-1514501259756-f4b6fbeffa67&socialMedia=Github&socialMediaUsername=theprinceraj
 ```
 
 This will return an image of a profile card with the provided information.
