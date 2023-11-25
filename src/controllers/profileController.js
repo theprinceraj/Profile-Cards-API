@@ -2,14 +2,17 @@ const { createCanvas, GlobalFonts } = require('@napi-rs/canvas');
 const { fetchAndLoadImage } = require('../utilities/fetch-load-image.js');
 const { logError } = require("../utilities/error-logger.js");
 
+GlobalFonts.registerFromPath('template/Design1/Montserrat-Regular.ttf', 'Montserrat-Regular');
+GlobalFonts.registerFromPath('template/Design1/Montserrat-Light.ttf', 'Montserrat-Light');
+GlobalFonts.registerFromPath('template/Design1/Montserrat-Bold.ttf', 'Montserrat-Bold');
+GlobalFonts.registerFromPath('template/Design1/Montserrat-SemiBold.ttf', 'Montserrat-SemiBold');
+
 /**
  * Asynchronously generates a profile card image using Canvas.
  * 
  * @return {Buffer} The image buffer of the generated profile card.
  */
-async function generateProfileCard(image, name, location, title) {
-    GlobalFonts.registerFromPath('template/Design1/Montserrat-SemiBold.ttf', 'Montserrat-SemiBold');
-    GlobalFonts.registerFromPath('template/Design1/Montserrat-Bold.ttf', 'Montserrat-Bold');
+async function generateProfileCard(image, name, location, title, socialMedia, socialMediaUsername) {
     try {
         const canvas = createCanvas(350, 500);
         const context = canvas.getContext('2d');
@@ -38,12 +41,19 @@ async function generateProfileCard(image, name, location, title) {
 
         // Draw a rectangular box filled with cyan color
         context.fillStyle = '#03BFCB';
-        context.fillRect(40, canvas.height/2 + 50, 85, 35);
+        context.fillRect(canvas.width / 11, canvas.height / 2 + 60, canvas.width / 2 - 40, 45);
+        context.fillStyle = 'black';
+        context.font = '16px Montserrat-Regular';
+        context.fillText(socialMedia, canvas.width / 11 + 65, canvas.height / 2 + 87); // Social Media
 
+        // Draw a rectangular box outlined with cyan colour
+        context.lineWidth = 1.5;
+        context.strokeStyle = '#03BFCB';
+        context.strokeRect(canvas.width / 9 + (canvas.width / 2 - 40), canvas.height / 2 + 60, canvas.width / 2 - 40, 45);
+        context.fillStyle = '#03BFCB';
+        context.font = '16px Montserrat-Regular';
+        context.fillText(socialMediaUsername, canvas.width / 9 + (canvas.width / 2 - 40) + 65, canvas.height / 2 + 87); // Social Media
 
-        // context.font = '13px Montserrat-SemiBold';
-        // context.fillText(socialMedia, 50, 390); // Social Media
-        // context.fillText(socialMediaUsername, 50, 420); // Social Media Username
 
         // Draw skills
         // context.fillStyle = '#B3B8CD';
@@ -56,6 +66,7 @@ async function generateProfileCard(image, name, location, title) {
         // Drawing border around the image
         context.beginPath();
         context.strokeStyle = '#00ffff';
+        context.lineWidth = 1.5;
         context.arc(175, 125, 85, 0, Math.PI * 2);
         context.stroke();
         context.closePath();
@@ -85,9 +96,9 @@ async function generateProfileCard(image, name, location, title) {
  */
 async function getProfileCard(req, res) {
     try {
-        const { imageLink, name, location, title } = req.query;
+        const { imageLink, name, location, title, socialMedia, socialMediaUsername } = req.query;
 
-        const requiredParameters = ['imageLink', 'name', 'location', 'title'];
+        const requiredParameters = ['imageLink', 'name', 'location', 'title', 'socialMedia', 'socialMediaUsername'];
         const missingParameters = requiredParameters.filter(parameter => !req.query[parameter]);
         if (missingParameters.length > 0) {
             res.status(400).send('Missing parameters: ' + missingParameters.join(', '));
@@ -100,7 +111,9 @@ async function getProfileCard(req, res) {
             fetchedImage,
             name,
             location,
-            title
+            title,
+            socialMedia,
+            socialMediaUsername
         );
 
         if (profileCardImageBuffer && Buffer.isBuffer(profileCardImageBuffer)) {
