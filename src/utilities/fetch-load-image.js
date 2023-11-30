@@ -1,4 +1,4 @@
-const { loadImage } = require('@napi-rs/canvas');
+const { loadImage } = require('canvas-constructor/skia');
 const fetch = require('node-fetch');
 
 /**
@@ -17,7 +17,7 @@ async function fetchAndLoadImage(url) {
 
         if (response.ok) {
             // Check if the response status is okay before loading the image
-            return await loadImage(await response.arrayBuffer());
+            return await loadImage(response);
         } else {
             console.error('Error loading the image. Response status:', response.status);
             return null;
