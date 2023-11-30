@@ -105,7 +105,6 @@ async function getProfileCard(req, res) {
     }
 
     const fetchedImage = await fetchAndLoadImage(imageLink);
-    console.log('Hello');
     const profileCardImageBuffer = await generateProfileCard(
       fetchedImage,
       name,
@@ -114,7 +113,6 @@ async function getProfileCard(req, res) {
       socialMedia,
       socialMediaUsername,
     );
-    console.log(profileCardImageBuffer);
     if (profileCardImageBuffer && Buffer.isBuffer(profileCardImageBuffer)) {
       res.set('Content-Type', 'image/png');
       res.send(profileCardImageBuffer);
