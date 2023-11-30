@@ -8,26 +8,15 @@ const fetch = require('node-fetch');
  * @return {Promise<Image|null>} A promise that resolves to the loaded image if successful, or null if there was an error.
  */
 async function fetchAndLoadImage(url) {
-    try {
-        const response = await fetch(url, {
-            headers: {
-                Accept: 'image/jpeg, image/png, image/webp',
-            },
-        });
-
-        if (response.ok) {
-            // Check if the response status is okay before loading the image
-            return await loadImage(response);
-        } else {
-            console.error('Error loading the image. Response status:', response.status);
-            return null;
-        }
-    } catch (error) {
-        console.error('Error fetching or loading the image:', error);
-        return null;
-    }
+  try {
+    // Check if the response status is okay before loading the image
+    return await loadImage(url);
+  } catch (error) {
+    console.error('Error fetching or loading the image:', error);
+    return null;
+  }
 }
 
 module.exports = {
-    fetchAndLoadImage
-}
+  fetchAndLoadImage,
+};
