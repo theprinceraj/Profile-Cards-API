@@ -3,6 +3,7 @@ const { fetchAndLoadImage } = require('../utilities/fetch-load-image.js');
 const { logError } = require('../utilities/error-logger.js');
 
 loadFont('Montserrat-Regular', 'template/Design1/Montserrat-Regular.ttf');
+loadFont('Montserrat-Medium', 'template/Design1/Montserrat-Medium.ttf');
 loadFont('Montserrat-Light', 'template/Design1/Montserrat-Light.ttf');
 loadFont('Montserrat-Bold', 'template/Design1/Montserrat-Bold.ttf');
 loadFont('Montserrat-SemiBold', 'template/Design1/Montserrat-SemiBold.ttf');
@@ -22,11 +23,11 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
             .printRectangle(0, 375, 350, 125) // Lower Graphic
 
             .setColor('#B3B8CD')
-            .setTextFont('19px Montserrat-SemiBold.ttf')
+            .setTextFont('19px Montserrat-Medium')
             .setTextAlign('center')
             .printText(name, 175, 250) // Name
 
-            .setTextFont('11px Montserrat-SemiBold')
+            .setTextFont('11px Montserrat-Regular')
             .printText(location.toUpperCase(), 175, 270) // Location
 
             .setTextFont('12px Montserrat-SemiBold')
@@ -36,11 +37,11 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         canvas.setColor('#03BFCB')
             .printRectangle(canvas.width / 11, canvas.height / 2 + 60, canvas.width / 2 - 40, 45)
             .setColor('black')
-            .setTextFont('16px Montserrat-Bold')
+            .setTextFont('16px Montserrat-Medium')
             .printText(socialMedia, canvas.width / 11 + 65, canvas.height / 2 + 87) // Social Media
 
             // Draw a rectangular box outlined with cyan colour
-            .setStrokeWidth(1.5)
+        canvas.setStrokeWidth(1.5)
             .setStroke('#03BFCB')
             .printStrokeRectangle(
                 canvas.width / 9 + (canvas.width / 2 - 40),
@@ -48,9 +49,8 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
                 canvas.width / 2 - 40,
                 45,
             )
-
             .setColor('#03BFCB')
-            .setTextFont('16px Montserrat-Regular')
+            .setTextFont('16px Montserrat-Medium')
             .printText(socialMediaUsername, canvas.width / 9 + (canvas.width / 2 - 40) + 65, canvas.height / 2 + 87) // Social Media Username
 
             // Drawing border around the image
