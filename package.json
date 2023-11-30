@@ -12,6 +12,7 @@
   "author": "theprinceraj",
   "license": "ISC",
   "dependencies": {
+    "canvas-constructor": "^7.0.1",
     "express": "^4.18.2",
     "node-fetch": "^2.7.0"
   },
