@@ -53,7 +53,7 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
 
     canvas.setColor('#03BFCB');
     canvas.setTextFont('16px Montserrat-Regular');
-    canvas.printText(socialMediaUsername, canvas.width / 9 + (canvas.width / 2 - 40) + 65, canvas.height / 2 + 87); // Social Media
+    canvas.printText(socialMediaUsername, canvas.width / 9 + (canvas.width / 2 - 40) + 65, canvas.height / 2 + 87); // Social Media Username
 
     // Draw skills
     // canvas.setColor('#B3B8CD');
