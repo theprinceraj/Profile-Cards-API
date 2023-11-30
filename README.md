@@ -30,8 +30,8 @@ It does not support design customisation as of now but I plan to implement it so
 ## Dependencies
 
 - Express.js: The web server framework for handling API requests.
-- canvas: Used to generate profile card images.
-- @napi-rs/canvas: Used to generate profile card images.
+- canvas-constructor: Used to generate profile card images.
+- skia-canvas: Used to generate profile card images.
 - node-fetch: Used to fetch the image from given link that is supposed to be displayed as your profile picture
 
 ## Contributors
@@ -46,5 +46,3 @@ Once we have contributors, we will list them down in this section. I hope we wil
 This project is open-source and available under the [MIT License](LICENSE).
 
 ---
-
-**Note:** Ensure that you have the necessary environment variables configured when deploying this project, especially in serverless environments.

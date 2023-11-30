@@ -4,18 +4,18 @@
   "description": "An open-source API that returns image of a profile card based on the information provided.",
   "main": "api/index.js",
   "scripts": {
-    "test": "start http://localhost:3000/api/profile?name=Prince%20Raj^&location=India^&socialMedia=Github^&socialMediaUsername=theprinceraj^&title=User%20interface%20designer%20and%20front-end%20developer^&skills=HTML,CSS,JavaScript^&imageLink=https://i.ibb.co/CmPRHxR/IMG-20231010-085955.jpg & node ./api/index.js",
-    "start": "start http://localhost:3000/api/profile?name=Prince%20Raj^&location=India^&socialMedia=Github^&socialMediaUsername=theprinceraj^&title=User%20interface%20designer%20and%20front-end%20developer^&skills=HTML,CSS,JavaScript^&imageLink=https://i.ibb.co/CmPRHxR/IMG-20231010-085955.jpg & node ./api/index.js",
+    "test": "node ./api/index.js",
+    "start": "start http://localhost:3000/api/profile?name=Prince%20Raj^&location=India^&socialMedia=Github^&socialMediaUsername=theprinceraj^&title=Web%20Developer^&skills=HTML,CSS,JavaScript^&imageLink=https://i.ibb.co/CmPRHxR/IMG-20231010-085955.jpg && node ./api/index.js",
     "build": "npm i"
   },
   "keywords": [],
   "author": "theprinceraj",
   "license": "ISC",
   "dependencies": {
-    "@napi-rs/canvas": "^0.1.44",
-    "canvas": "^2.11.2",
+    "canvas-constructor": "^7.0.1",
     "express": "^4.18.2",
-    "node-fetch": "^2.7.0"
+    "node-fetch": "^2.7.0",
+    "skia-canvas": "^1.0.1"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
