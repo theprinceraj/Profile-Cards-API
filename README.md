@@ -31,8 +31,7 @@ It does not support design customisation as of now but I plan to implement it so
 
 - Express.js: The web server framework for handling API requests.
 - canvas-constructor: Used to generate profile card images.
-- skia-canvas: Used to generate profile card images.
-- node-fetch: Used to fetch the image from given link that is supposed to be displayed as your profile picture
+- canvas: Used to generate profile card images.
 
 ## Contributors
 
