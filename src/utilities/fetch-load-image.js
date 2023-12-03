@@ -1,5 +1,4 @@
 const { loadImage } = require('canvas-constructor/cairo');
-const fetch = require('node-fetch');
 
 /**
  * Fetches and loads an image from the specified URL.
