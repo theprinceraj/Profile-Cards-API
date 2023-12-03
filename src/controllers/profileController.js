@@ -1,4 +1,4 @@
-const { Canvas, loadFont } = require('canvas-constructor/skia');
+const { Canvas, loadFont } = require('canvas-constructor/cairo');
 const { fetchAndLoadImage } = require('../utilities/fetch-load-image.js');
 const { logError } = require('../utilities/error-logger.js');
 
