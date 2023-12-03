@@ -1,4 +1,4 @@
-const { loadImage } = require('canvas-constructor/skia');
+const { loadImage } = require('canvas-constructor/cairo');
 const fetch = require('node-fetch');
 
 /**

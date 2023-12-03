@@ -1,12 +1,12 @@
-const { Canvas, loadFont } = require('canvas-constructor/skia');
+const { Canvas, loadFont } = require('canvas-constructor/cairo');
 const { fetchAndLoadImage } = require('../utilities/fetch-load-image.js');
 const { logError } = require('../utilities/error-logger.js');
 
-loadFont('Montserrat-Regular', 'template/Design1/Montserrat-Regular.ttf');
-loadFont('Montserrat-Medium', 'template/Design1/Montserrat-Medium.ttf');
-loadFont('Montserrat-Light', 'template/Design1/Montserrat-Light.ttf');
-loadFont('Montserrat-Bold', 'template/Design1/Montserrat-Bold.ttf');
-loadFont('Montserrat-SemiBold', 'template/Design1/Montserrat-SemiBold.ttf');
+loadFont('template/Design1/Montserrat-Regular.ttf', { family: 'Montserrat-Regular' });
+loadFont('template/Design1/Montserrat-Medium.ttf', { family: 'Montserrat-Medium' });
+loadFont('template/Design1/Montserrat-Light.ttf', { family: 'Montserrat-Light' });
+loadFont('template/Design1/Montserrat-Bold.ttf', { family: 'Montserrat-Bold' });
+loadFont('template/Design1/Montserrat-SemiBold.ttf', { family: 'Montserrat-SemiBold' });
 
 /**
  * Asynchronously generates a profile card image using Canvas.
@@ -40,7 +40,7 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
             .setTextFont('16px Montserrat-Medium')
             .printText(socialMedia, canvas.width / 11 + 65, canvas.height / 2 + 87) // Social Media
 
-            // Draw a rectangular box outlined with cyan colour
+        // Draw a rectangular box outlined with cyan colour
         canvas.setStrokeWidth(1.5)
             .setStroke('#03BFCB')
             .printStrokeRectangle(
