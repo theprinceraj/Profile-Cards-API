@@ -1,12 +1,13 @@
 const { Canvas, loadFont } = require('canvas-constructor/cairo');
 const { fetchAndLoadImage } = require('../utilities/fetch-load-image.js');
 const { logError } = require('../utilities/error-logger.js');
+const { join } = require('path');
 
-loadFont('public/template/Design1/Montserrat-Regular.ttf', { family: 'Montserrat-Regular' });
-loadFont('public/template/Design1/Montserrat-Medium.ttf', { family: 'Montserrat-Medium' });
-loadFont('public/template/Design1/Montserrat-Light.ttf', { family: 'Montserrat-Light' });
-loadFont('public/template/Design1/Montserrat-Bold.ttf', { family: 'Montserrat-Bold' });
-loadFont('public/template/Design1/Montserrat-SemiBold.ttf', { family: 'Montserrat-SemiBold' });
+loadFont(join(__dirname , '../../api/_template/Design1/Montserrat-Regular.ttf'), { family: 'Montserrat-Regular' });
+loadFont(join(__dirname , '../../api/_template/Design1/Montserrat-Medium.ttf'), { family: 'Montserrat-Medium' });
+loadFont(join(__dirname , '../../api/_template/Design1/Montserrat-Light.ttf'), { family: 'Montserrat-Light' });
+loadFont(join(__dirname , '../../api/_template/Design1/Montserrat-Bold.ttf'), { family: 'Montserrat-Bold' });
+loadFont(join(__dirname , '../../api/_template/Design1/Montserrat-SemiBold.ttf'), { family: 'Montserrat-SemiBold' });
 
 /**
  * Asynchronously generates a profile card image using Canvas.
