@@ -3,11 +3,11 @@ const { fetchAndLoadImage } = require('../utilities/fetch-load-image.js');
 const { logError } = require('../utilities/error-logger.js');
 const { join } = require('path');
 
-loadFont(join(__dirname , '../../api/_template/Design1/Montserrat-Regular.ttf'), { family: 'Montserrat-Regular' });
-loadFont(join(__dirname , '../../api/_template/Design1/Montserrat-Medium.ttf'), { family: 'Montserrat-Medium' });
-loadFont(join(__dirname , '../../api/_template/Design1/Montserrat-Light.ttf'), { family: 'Montserrat-Light' });
-loadFont(join(__dirname , '../../api/_template/Design1/Montserrat-Bold.ttf'), { family: 'Montserrat-Bold' });
-loadFont(join(__dirname , '../../api/_template/Design1/Montserrat-SemiBold.ttf'), { family: 'Montserrat-SemiBold' });
+loadFont(join(__dirname, '../../api/_template/Design1/Montserrat-Regular.ttf'), { family: 'Montserrat-Regular' });
+loadFont(join(__dirname, '../../api/_template/Design1/Montserrat-Medium.ttf'), { family: 'Montserrat-Medium' });
+loadFont(join(__dirname, '../../api/_template/Design1/Montserrat-Light.ttf'), { family: 'Montserrat-Light' });
+loadFont(join(__dirname, '../../api/_template/Design1/Montserrat-Bold.ttf'), { family: 'Montserrat-Bold' });
+loadFont(join(__dirname, '../../api/_template/Design1/Montserrat-SemiBold.ttf'), { family: 'Montserrat-SemiBold' });
 
 /**
  * Asynchronously generates a profile card image using Canvas.
@@ -34,41 +34,6 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
             .setTextFont('12px Montserrat-SemiBold')
             .printText(title, 175, 295) // Title
 
-        // Draw a rectangular box filled with cyan color
-        canvas.setColor('#03BFCB')
-            .printRectangle(canvas.width / 11, canvas.height / 2 + 60, canvas.width / 2 - 40, 45)
-            .setColor('black')
-            .setTextFont('16px Montserrat-Medium')
-            .printText(socialMedia, canvas.width / 11 + 65, canvas.height / 2 + 87) // Social Media
-
-        // Draw a rectangular box outlined with cyan colour
-        canvas.setStrokeWidth(1.5)
-            .setStroke('#03BFCB')
-            .printStrokeRectangle(
-                canvas.width / 9 + (canvas.width / 2 - 40),
-                canvas.height / 2 + 60,
-                canvas.width / 2 - 40,
-                45,
-            )
-            .setColor('#03BFCB')
-            .setTextFont('16px Montserrat-Medium')
-            .printText(socialMediaUsername, canvas.width / 9 + (canvas.width / 2 - 40) + 65, canvas.height / 2 + 87) // Social Media Username
-
-            // Drawing border around the image
-            .beginPath()
-            .setStroke('#00ffff')
-            .setLineWidth(1.5)
-            .arc(175, 125, 85, 0, Math.PI * 2)
-            .stroke()
-            .closePath()
-            // Create a clipping path to make the image a circle
-            .beginPath()
-            .arc(175, 125, 75, 0, Math.PI * 2)
-            .closePath()
-            .clip()
-            // Draw the image inside the circle
-            .printImage(image, 100, 50, 150, 150);
-
         // Draw skills
         // canvas.setColor('#B3B8CD')
         // canvas.font = '14px Montserrat-SemiBold'
@@ -76,6 +41,43 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         // skillsList.forEach((skill, index) => {
         //     canvas.fillText(skill, 100, 360 + index * 20) // Adjust the position as needed
         // })
+
+
+        // Draw social media links
+        // Draw a rectangular box filled with cyan color
+        canvas.setColor('#03BFCB')
+            .printRoundedRectangle(
+                canvas.width / 11,
+                canvas.height / 2 + 60,
+                canvas.width / 2 - 40,
+                45,
+                10
+            )
+            .setColor('black')
+            .setTextFont('16px Montserrat-Medium')
+            .printText(socialMedia, canvas.width / 11 + 65, canvas.height / 2 + 87) // Social Media
+
+        // Draw a rectangular box outlined with cyan colour
+        canvas.setStrokeWidth(1.5)
+            .setStroke('#03BFCB')
+            .createRoundedPath(
+                canvas.width / 9 + (canvas.width / 2 - 40),
+                canvas.height / 2 + 60,
+                canvas.width / 2 - 40,
+                45,
+                10
+            )
+            .stroke()
+            .setColor('#03BFCB')
+            .setTextFont('16px Montserrat-Medium')
+            .printText(socialMediaUsername, canvas.width / 9 + (canvas.width / 2 - 40) + 65, canvas.height / 2 + 87) // Social Media Username
+
+        // Creates border around person's image
+        canvas.createCircularPath(175, 125, 90)
+            .stroke()
+            .closePath();
+        // Draws the person's image
+        canvas.printCircularImage(image, 175, 125, 80);
 
         const buffer = await canvas.toBuffer('image/png');
         return buffer;
@@ -94,9 +96,15 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
  */
 async function getProfileCard(req, res) {
     try {
-        const { imageLink, name, location, title, socialMedia, socialMediaUsername } = req.query;
+        const {
+            imageLink = 'https://i.ibb.co/2tgNv2d/man-157699-640.png',
+            name = 'Pro Boy',
+            location = 'Earth',
+            title = 'Coder',
+            socialMedia,
+            socialMediaUsername } = req.query;
 
-        const requiredParameters = ['imageLink', 'name', 'location', 'title', 'socialMedia', 'socialMediaUsername'];
+        const requiredParameters = ['imageLink', 'name', 'location', 'title'];
         const missingParameters = requiredParameters.filter(parameter => !req.query[parameter]);
         if (missingParameters.length > 0) {
             res.status(400).send('Missing parameters: ' + missingParameters.join(', '));
@@ -104,6 +112,7 @@ async function getProfileCard(req, res) {
         }
 
         const fetchedImage = await fetchAndLoadImage(imageLink);
+        console.log(fetchedImage, "yooooo!")
         const profileCardImageBuffer = await generateProfileCard(
             fetchedImage,
             name,
