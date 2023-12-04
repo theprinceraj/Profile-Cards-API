@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Cards Link Generator</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
+
 <body>
-    
+    <div class="form-container">
+        <h2>User Information</h2>
+        <form id="userInfoForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required>
+            </div>
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="socialMedia">Social Media:</label>
+                <input type="text" id="socialMedia" name="socialMedia">
+            </div>
+            <div class="form-group">
+                <label for="socialMediaUsername">Social Media Username:</label>
+                <input type="text" id="socialMediaUsername" name="socialMediaUsername">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script src="scripts/script.js"></script>
 </body>
+
 </html>
