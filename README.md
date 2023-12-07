@@ -8,12 +8,14 @@ The Profile Cards API is an open-source service that generates profile card imag
 
 To generate a profile card, make a GET request to the API with the following query parameters:
 
-- `name`: The name to be displayed on the profile card.
-- `location`: The user's location or city.
-- `title`: The user's job title or description.
+- `name`*: The name to be displayed on the profile card.
+- `location`*: The user's location or city.
+- `title`*: The user's job title or description.
 - `imageLink`: The URL of the user's profile picture.
 - `socialMedia`: The name of social media whose username you want to show
 - `socialMediaUsername`: The username of the previously specified social media
+
+The parameters marks with asterisk(*) are required paramaters. However, if they are not provided, the API will still generate an image with default values.
 
 Example API request:
 
