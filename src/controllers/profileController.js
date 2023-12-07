@@ -43,39 +43,42 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
         // })
 
 
-        // Draw social media links
-        // Draw a rectangular box filled with cyan color
-        canvas.setColor('#03BFCB')
-            .printRoundedRectangle(
-                canvas.width / 11,
-                canvas.height / 2 + 60,
-                canvas.width / 2 - 40,
-                45,
-                10
-            )
-            .setColor('black')
-            .setTextFont('16px Montserrat-Medium')
-            .printText(socialMedia, canvas.width / 11 + 65, canvas.height / 2 + 87) // Social Media
+        if (socialMedia && socialMediaUsername) {
+            // Draw social media links
+            // Draw a rectangular box filled with cyan color
+            canvas.setColor('#03BFCB')
+                .printRoundedRectangle(
+                    canvas.width / 11,
+                    canvas.height / 2 + 60,
+                    canvas.width / 2 - 40,
+                    45,
+                    10
+                )
+                .setColor('black')
+                .setTextFont('16px Montserrat-Medium')
+                .printText(socialMedia, canvas.width / 11 + 65, canvas.height / 2 + 87) // Social Media
 
-        // Draw a rectangular box outlined with cyan colour
-        canvas.setStrokeWidth(1.5)
-            .setStroke('#03BFCB')
-            .createRoundedPath(
-                canvas.width / 9 + (canvas.width / 2 - 40),
-                canvas.height / 2 + 60,
-                canvas.width / 2 - 40,
-                45,
-                10
-            )
-            .stroke()
-            .setColor('#03BFCB')
-            .setTextFont('16px Montserrat-Medium')
-            .printText(socialMediaUsername, canvas.width / 9 + (canvas.width / 2 - 40) + 65, canvas.height / 2 + 87) // Social Media Username
+            // Draw a rectangular box outlined with cyan colour
+            canvas.setStrokeWidth(1.5)
+                .setStroke('#03BFCB')
+                .createRoundedPath(
+                    canvas.width / 9 + (canvas.width / 2 - 40),
+                    canvas.height / 2 + 60,
+                    canvas.width / 2 - 40,
+                    45,
+                    10
+                )
+                .stroke()
+                .setColor('#03BFCB')
+                .setTextFont('16px Montserrat-Medium')
+                .printText(socialMediaUsername, canvas.width / 9 + (canvas.width / 2 - 40) + 65, canvas.height / 2 + 87) // Social Media Username
+        }
 
         // Creates border around person's image
         canvas.createCircularPath(175, 125, 90)
+            .setStroke('#03BFCB')
             .stroke()
-            .closePath();
+            .closePath()
         // Draws the person's image
         canvas.printCircularImage(image, 175, 125, 80);
 
@@ -98,18 +101,18 @@ async function getProfileCard(req, res) {
     try {
         const {
             imageLink = 'https://i.ibb.co/2tgNv2d/man-157699-640.png',
-            name = 'Pro Boy',
+            name = 'Example Name',
             location = 'Earth',
             title = 'Coder',
             socialMedia,
             socialMediaUsername } = req.query;
 
-        const requiredParameters = ['imageLink', 'name', 'location', 'title'];
-        const missingParameters = requiredParameters.filter(parameter => !req.query[parameter]);
-        if (missingParameters.length > 0) {
-            res.status(400).send('Missing parameters: ' + missingParameters.join(', '));
-            return;
-        }
+        // const requiredParameters = ['name', 'location', 'title'];
+        // const missingParameters = requiredParameters.filter(parameter => !req.query[parameter]);
+        // if (missingParameters.length > 0) {
+        //     res.status(400).send('Missing parameters: ' + missingParameters.join(', '));
+        //     return;
+        // }
 
         const fetchedImage = await fetchAndLoadImage(imageLink);
         if (!fetchedImage) {
