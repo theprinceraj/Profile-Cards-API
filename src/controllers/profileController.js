@@ -112,7 +112,10 @@ async function getProfileCard(req, res) {
         }
 
         const fetchedImage = await fetchAndLoadImage(imageLink);
-        console.log(fetchedImage, "yooooo!")
+        if (!fetchedImage) {
+            res.status(500).send('Failed to fetch or load the image.');
+            return;
+        }
         const profileCardImageBuffer = await generateProfileCard(
             fetchedImage,
             name,
