@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -10,67 +10,81 @@
 </head>
 
 <body>
-    <div class="modal" id="errorModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Error: Image Generation Failed</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Please check your inputs and try again. Meanwhile, an image with default values will be generated.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+
+    <div class="container heading-parent-container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-6">
+                <div class="heading-container">
+                    <h1>Profile Cards Generator</h1>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <div class="page-container">
-        <div class="card">
-            <div class="card-body">
-                <p class="card-text">Live Preview</p>
+    <div class="besides-heading">
+        <div class="modal" id="errorModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Error: Image Generation Failed</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Please check your inputs and try again. Meanwhile, an image with default values will be
+                        generated.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
             </div>
-            <img class="card-img-bottom"
-                src="https://profile-cards-api.vercel.app/api/profile?name=Prince%20Raj&location=India&title=Web%20Developer&imageLink=https://images.unsplash.com/photo-1514501259756-f4b6fbeffa67&socialMedia=Linkedin&socialMediaUsername=theprinceraj"
-                alt="Card Image Cap" id="profile-image">
         </div>
 
-        <div id="form-container">
-            <form class="row g-3">
-                <div class="col-md-12">
-                    <label for="inputImageLink" class="form-label" required>Image Link<span>*</span></label>
-                    <input type="url" class="form-control" id="inputImageLink">
+
+        <div class="page-container">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text">Live Preview</p>
                 </div>
-                <div class="col-md-12">
-                    <label for="inputName" class="form-label" required>Name<span>*</span></label>
-                    <input type="text" class="form-control" id="inputName">
-                </div>
-                <div class="col-md-6">
-                    <label for="inputLocation" class="form-label" required>Location<span>*</span></label>
-                    <input type="text" class="form-control" id="inputLocation">
-                </div>
-                <div class="col-md-6">
-                    <label for="inputTitle" class="form-label" required>Title<span>*</span></label>
-                    <input type="text" class="form-control" id="inputTitle">
-                </div>
-                <div class="col-md-6">
-                    <label for="inputSocialMedia" class="form-label">Social Media</label>
-                    <input type="text" class="form-control" id="inputSocialMedia">
-                </div>
-                <div class="col-md-6">
-                    <label for="inputSocialMediaUsername" class="form-label">Social Media Username</label>
-                    <input type="text" class="form-control" id="inputSocialMediaUsername">
-                </div>
-                <div class="col-md-12" id="noteContainer">
-                    <p><span>*</span> means that the particular field is required.</p>
-                </div>
-                <div class="col-12" id="btn-container">
-                    <button type="button" class="btn btn-primary col-12">Copy Link</button>
-                </div>
-            </form>
+                <img class="card-img-bottom"
+                    src="https://profile-cards-api.vercel.app/api/profile?name=Prince%20Raj&location=India&title=Web%20Developer&imageLink=https://images.unsplash.com/photo-1514501259756-f4b6fbeffa67&socialMedia=Linkedin&socialMediaUsername=theprinceraj"
+                    alt="Card Image Cap" id="profile-image">
+            </div>
+
+            <div id="form-container">
+                <form class="row g-3">
+                    <div class="col-md-12">
+                        <label for="inputImageLink" class="form-label" required>Image Link<span>*</span></label>
+                        <input type="url" class="form-control" id="inputImageLink">
+                    </div>
+                    <div class="col-md-12">
+                        <label for="inputName" class="form-label" required>Name<span>*</span></label>
+                        <input type="text" class="form-control" id="inputName">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputLocation" class="form-label" required>Location<span>*</span></label>
+                        <input type="text" class="form-control" id="inputLocation">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputTitle" class="form-label" required>Title<span>*</span></label>
+                        <input type="text" class="form-control" id="inputTitle">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputSocialMedia" class="form-label">Social Media</label>
+                        <input type="text" class="form-control" id="inputSocialMedia">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputSocialMediaUsername" class="form-label">Social Media Username</label>
+                        <input type="text" class="form-control" id="inputSocialMediaUsername">
+                    </div>
+                    <div class="col-md-12" id="noteContainer">
+                        <p><span>*</span> means that the particular field is required.</p>
+                    </div>
+                    <div class="col-12" id="btn-container">
+                        <button type="button" class="btn btn-primary col-12">Copy Link</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 

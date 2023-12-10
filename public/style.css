@@ -12,7 +12,29 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     overflow-y: scroll;
+}
+
+.heading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+    gap: 2rem;
+}
+
+.heading-container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.besides-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .page-container {
