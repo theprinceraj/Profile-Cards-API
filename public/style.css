@@ -9,10 +9,10 @@
 
 body {
     width: 100vw;
-    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-y: scroll;
 }
 
 .page-container {
@@ -57,4 +57,17 @@ label span {
 
 #noteContainer span {
     color: red;
+}
+
+/* Media Query for screens smaller than 768px */
+@media (max-width: 760px) {
+    .page-container {
+        width: 80%;
+        flex-direction: column-reverse;
+        gap: 3rem;
+    }
+
+    #form-container {
+        width: 100%;
+    }
 }
