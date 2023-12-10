@@ -1,12 +1,44 @@
-document.getElementById('userInfoForm').addEventListener('submit', function (event) {
-    event.preventDefault();
+document.addEventListener("DOMContentLoaded", function () {
+    const imageLinkInput = document.getElementById('inputImageLink');
+    const nameInput = document.getElementById('inputName');
+    const locationInput = document.getElementById('inputLocation');
+    const titleInput = document.getElementById('inputTitle');
+    const socialMediaInput = document.getElementById('inputSocialMedia');
+    const socialMediaUsernameInput = document.getElementById('inputSocialMediaUsername');
+    const profileImage = document.getElementById('profile-image');
 
-    const name = document.getElementById('name').value;
-    const location = document.getElementById('location').value;
-    const title = document.getElementById('title').value;
-    const socialMedia = document.getElementById('socialMedia').value;
-    const socialMediaUsername = document.getElementById('socialMediaUsername').value;
+    const errorModal = new bootstrap.Modal(document.getElementById('errorModal')); // Initialize Bootstrap modal
 
-    // Perform further actions with the gathered information (e.g., send to a server)
-    console.log({ name, location, title, socialMedia, socialMediaUsername });
+    function updateImageSrc() {
+        const imageLink = imageLinkInput.value;
+        const name = nameInput.value;
+        const location = locationInput.value;
+        const title = titleInput.value;
+        const socialMedia = socialMediaInput.value;
+        const socialMediaUsername = socialMediaUsernameInput.value;
+
+        let newSrc = '';
+        // Check if required fields are filled
+        if (imageLink && name && location && title) {
+            if (socialMedia && socialMediaUsername) {
+                newSrc = `https://profile-cards-api.vercel.app/api/profile?name=${name}&location=${location}&title=${title}&imageLink=${imageLink}&socialMedia=${socialMedia}&socialMediaUsername=${socialMediaUsername}`;
+            } else {
+                newSrc = `https://profile-cards-api.vercel.app/api/profile?name=${name}&location=${location}&title=${title}&imageLink=${imageLink}`;
+
+            }
+            profileImage.onerror = () => {
+                errorModal.show(); // Show the error modal if image fails to load
+                profileImage.src = 'https://profile-cards-api.vercel.app/api/profile?name=Prince%20Raj&location=India&title=Web%20Developer&imageLink=https://images.unsplash.com/photo-1514501259756-f4b6fbeffa67&socialMedia=Linkedin&socialMediaUsername=theprinceraj';
+            };
+            profileImage.src = newSrc;
+        }
+        profileImage.src = newSrc;
+    }
+
+    imageLinkInput.addEventListener('input', updateImageSrc);
+    nameInput.addEventListener('input', updateImageSrc);
+    locationInput.addEventListener('input', updateImageSrc);
+    titleInput.addEventListener('input', updateImageSrc);
+    socialMediaInput.addEventListener('input', updateImageSrc);
+    socialMediaUsernameInput.addEventListener('input', updateImageSrc);
 });

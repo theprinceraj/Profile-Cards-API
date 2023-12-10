@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat';
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.card {
+    width: 18rem;
+}
+
+#form-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 40%;
+}
+
+.card-body {
+    text-align: center;
+    font-weight: 600;
+}
+
+#btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+label span {
+    font-size: 1rem;
+    color: red;
+}
+
+#noteContainer {
+    font-size: smaller;
+    color: gray;
+}
+
+#noteContainer span {
+    color: red;
+}
