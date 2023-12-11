@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 newSrc = `https://profile-cards-api.vercel.app/api/profile?name=${name}&location=${location}&title=${title}&imageLink=${imageLink}`;
 
             }
+            profileImage.src = newSrc;
             profileImage.onerror = () => {
                 isImageLoaded = false;
                 setTimeout(() => {
@@ -41,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 }, 1000);
             };
-            profileImage.src = newSrc;
         }
     }
 
