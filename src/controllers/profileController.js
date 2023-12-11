@@ -113,13 +113,6 @@ async function getProfileCard(req, res) {
             socialMedia,
             socialMediaUsername } = req.query;
 
-        // const requiredParameters = ['name', 'location', 'title'];
-        // const missingParameters = requiredParameters.filter(parameter => !req.query[parameter]);
-        // if (missingParameters.length > 0) {
-        //     res.status(400).send('Missing parameters: ' + missingParameters.join(', '));
-        //     return;
-        // }
-
         const fetchedImage = await fetchAndLoadImage(imageLink);
         if (!fetchedImage) {
             res.status(500).send('Failed to fetch or load the image.');
