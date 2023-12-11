@@ -3,11 +3,17 @@ const { fetchAndLoadImage } = require('../utilities/fetch-load-image.js');
 const { logError } = require('../utilities/error-logger.js');
 const { join } = require('path');
 
-loadFont(join(__dirname, '../../api/_template/Design1/Montserrat-Regular.ttf'), { family: 'Montserrat-Regular' });
-loadFont(join(__dirname, '../../api/_template/Design1/Montserrat-Medium.ttf'), { family: 'Montserrat-Medium' });
-loadFont(join(__dirname, '../../api/_template/Design1/Montserrat-Light.ttf'), { family: 'Montserrat-Light' });
-loadFont(join(__dirname, '../../api/_template/Design1/Montserrat-Bold.ttf'), { family: 'Montserrat-Bold' });
-loadFont(join(__dirname, '../../api/_template/Design1/Montserrat-SemiBold.ttf'), { family: 'Montserrat-SemiBold' });
+const fontFiles = [
+    'Montserrat-Regular.ttf',
+    'Montserrat-Medium.ttf',
+    'Montserrat-Light.ttf',
+    'Montserrat-Bold.ttf',
+    'Montserrat-SemiBold.ttf'
+];
+fontFiles.forEach(file => {
+    loadFont(join(__dirname, `../../api/_template/Design1/${file}`), { family: file.replace('.ttf', '') });
+});
+
 
 /**
  * Asynchronously generates a profile card image using Canvas.
@@ -106,13 +112,6 @@ async function getProfileCard(req, res) {
             title = 'Coder',
             socialMedia,
             socialMediaUsername } = req.query;
-
-        // const requiredParameters = ['name', 'location', 'title'];
-        // const missingParameters = requiredParameters.filter(parameter => !req.query[parameter]);
-        // if (missingParameters.length > 0) {
-        //     res.status(400).send('Missing parameters: ' + missingParameters.join(', '));
-        //     return;
-        // }
 
         const fetchedImage = await fetchAndLoadImage(imageLink);
         if (!fetchedImage) {

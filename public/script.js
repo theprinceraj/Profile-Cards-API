@@ -1,21 +1,27 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const imageLinkInput = document.getElementById('inputImageLink');
-    const nameInput = document.getElementById('inputName');
-    const locationInput = document.getElementById('inputLocation');
-    const titleInput = document.getElementById('inputTitle');
-    const socialMediaInput = document.getElementById('inputSocialMedia');
-    const socialMediaUsernameInput = document.getElementById('inputSocialMediaUsername');
-    const profileImage = document.getElementById('profile-image');
+    const [imageLinkInput, nameInput, locationInput, titleInput, socialMediaInput, socialMediaUsernameInput, profileImage] = ['#inputImageLink',
+        '#inputName',
+        '#inputLocation',
+        '#inputTitle',
+        '#inputSocialMedia',
+        '#inputSocialMediaUsername',
+        '#profile-image'].map(selectorID => document.querySelector(selectorID));
 
     const errorModal = new bootstrap.Modal(document.getElementById('errorModal')); // Initialize Bootstrap modal
 
+    let isImageLoaded = false;
+    profileImage.onload = () => {
+        isImageLoaded = true;
+    }
+
     function updateImageSrc() {
-        const imageLink = imageLinkInput.value;
-        const name = nameInput.value;
-        const location = locationInput.value;
-        const title = titleInput.value;
-        const socialMedia = socialMediaInput.value;
-        const socialMediaUsername = socialMediaUsernameInput.value;
+        const { value: imageLink } = imageLinkInput,
+            { value: name } = nameInput,
+            { value: location } = locationInput,
+            { value: title } = titleInput,
+            { value: socialMedia } = socialMediaInput,
+            { value: socialMediaUsername } = socialMediaUsernameInput;
+
 
         let newSrc = '';
         // Check if required fields are filled
@@ -27,24 +33,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
             profileImage.onerror = () => {
-                errorModal.show(); // Show the error modal if image fails to load
-                profileImage.src = 'https://profile-cards-api.vercel.app/api/profile?name=Prince%20Raj&location=India&title=Web%20Developer&imageLink=https://images.unsplash.com/photo-1514501259756-f4b6fbeffa67&socialMedia=Linkedin&socialMediaUsername=theprinceraj';
+                isImageLoaded = false;
+                setTimeout(() => {
+                    if (!isImageLoaded) {
+                        errorModal.show(); // Show the error modal if image fails to load
+                        profileImage.src = 'https://profile-cards-api.vercel.app/api/profile?name=Prince%20Raj&location=India&title=Web%20Developer&imageLink=https://images.unsplash.com/photo-1514501259756-f4b6fbeffa67&socialMedia=Linkedin&socialMediaUsername=theprinceraj';
+                    }
+                }, 1000);
             };
             profileImage.src = newSrc;
         }
-        profileImage.src = newSrc;
     }
 
-    imageLinkInput.addEventListener('input', updateImageSrc);
-    nameInput.addEventListener('input', updateImageSrc);
-    locationInput.addEventListener('input', updateImageSrc);
-    titleInput.addEventListener('input', updateImageSrc);
-    socialMediaInput.addEventListener('input', updateImageSrc);
-    socialMediaUsernameInput.addEventListener('input', updateImageSrc);
+    // Attaching event listeners to input fields
+    [
+        imageLinkInput,
+        nameInput,
+        locationInput,
+        titleInput,
+        socialMediaInput,
+        socialMediaUsernameInput
+    ].forEach(element => element.addEventListener('input', updateImageSrc));
 
+    // Functionality for the copy link button
     copyLinkBtn.addEventListener('click', () => {
-        // Check if the required fields are filled
-        if (!imageLinkInput.value || !nameInput.value || !locationInput.value || !titleInput.value) {
+        
+        const isAnyFieldEmpty = ![imageLinkInput, nameInput, locationInput, titleInput].every(field => field.value.trim());
+        if (isAnyFieldEmpty) {
             alert('Please fill in all required fields');
             return;
         }
@@ -53,8 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
             alert('Your browser does not support the Clipboard API');
             return;
         }
-        const newSrc = profileImage.src;
-        navigator.clipboard.writeText(newSrc);
+        navigator.clipboard.writeText(profileImage.src);
 
         copyLinkBtn.textContent = 'Copied!';
         setTimeout(() => {
