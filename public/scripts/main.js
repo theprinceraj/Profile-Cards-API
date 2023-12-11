@@ -1,11 +1,10 @@
-const [
-    imageLinkInput,
-    nameInput,
-    locationInput,
-    titleInput,
-    socialMediaInput,
-    socialMediaUsernameInput,
-    profileImage] = ['#inputImageLink', '#inputName', '#inputLocation', '#inputTitle', '#inputSocialMedia', '#inputSocialMediaUsername', '#profile-image'].map(selectorID => document.querySelector(selectorID));
+const imageLinkInput = document.querySelector('#inputImageLink');
+const nameInput = document.querySelector('#inputName');
+const locationInput = document.querySelector('#inputLocation');
+const titleInput = document.querySelector('#inputTitle');
+const socialMediaInput = document.querySelector('#inputSocialMedia');
+const socialMediaUsernameInput = document.querySelector('#inputSocialMediaUsername');
+const profileImage = document.querySelector('#profile-image');
 
 let formFilledCorrectlyAtLeastOnce = false;
 let timer;
