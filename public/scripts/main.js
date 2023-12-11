@@ -1,21 +1,23 @@
+const [
+    imageLinkInput,
+    nameInput,
+    locationInput,
+    titleInput,
+    socialMediaInput,
+    socialMediaUsernameInput,
+    profileImage] = ['#inputImageLink', '#inputName', '#inputLocation', '#inputTitle', '#inputSocialMedia', '#inputSocialMediaUsername', '#profile-image'].map(selectorID => document.querySelector(selectorID));
 
-const [imageLinkInput, nameInput, locationInput, titleInput, socialMediaInput, socialMediaUsernameInput, profileImage] = ['#inputImageLink',
-    '#inputName',
-    '#inputLocation',
-    '#inputTitle',
-    '#inputSocialMedia',
-    '#inputSocialMediaUsername',
-    '#profile-image'].map(selectorID => document.querySelector(selectorID));
-
-
+let formFilledCorrectlyAtLeastOnce = false;
+let timer;
 function updateImageSrc() {
-    const { value: imageLink } = imageLinkInput,
-        { value: name } = nameInput,
-        { value: location } = locationInput,
-        { value: title } = titleInput,
-        { value: socialMedia } = socialMediaInput,
-        { value: socialMediaUsername } = socialMediaUsernameInput;
+    const imageLink = imageLinkInput.value.trim(),
+        name = nameInput.value.trim(),
+        location = locationInput.value.trim(),
+        title = titleInput.value.trim(),
+        socialMedia = socialMediaInput.value.trim(),
+        socialMediaUsername = socialMediaUsernameInput.value.trim();
 
+    console.log("Inside updateImageSrc function ==>" + title + "<==");
 
     let newSrc = '';
     // Check if required fields are filled
@@ -27,6 +29,16 @@ function updateImageSrc() {
 
         }
         profileImage.src = newSrc;
+        formFilledCorrectlyAtLeastOnce = true;
+        clearTimeout(timer);
+    }
+}
+if (!imageLinkInput.value.trim() || !nameInput.value.trim() || !locationInput.value.trim() || !titleInput.value.trim()) {
+    if (formFilledCorrectlyAtLeastOnce) {
+        timer = setTimeout(() => {
+            errorModal.show(); // Show the error modal if image fails to load
+            profileImage.src = defaultSrcUrl;
+        }, 3000);
     }
 }
 
