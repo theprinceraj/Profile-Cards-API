@@ -13,6 +13,15 @@ document.addEventListener("DOMContentLoaded", function () {
     profileImage.onload = () => {
         isImageLoaded = true;
     }
+    profileImage.onerror = () => {
+        isImageLoaded = false;
+        setTimeout(() => {
+            if (!isImageLoaded) {
+                errorModal.show(); // Show the error modal if image fails to load
+                profileImage.src = 'https://profile-cards-api.vercel.app/api/profile?name=Prince%20Raj&location=India&title=Web%20Developer&imageLink=https://images.unsplash.com/photo-1514501259756-f4b6fbeffa67&socialMedia=Linkedin&socialMediaUsername=theprinceraj';
+            }
+        }, 1000);
+    };
 
     function updateImageSrc() {
         const { value: imageLink } = imageLinkInput,
@@ -33,15 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
             profileImage.src = newSrc;
-            profileImage.onerror = () => {
-                isImageLoaded = false;
-                setTimeout(() => {
-                    if (!isImageLoaded) {
-                        errorModal.show(); // Show the error modal if image fails to load
-                        profileImage.src = 'https://profile-cards-api.vercel.app/api/profile?name=Prince%20Raj&location=India&title=Web%20Developer&imageLink=https://images.unsplash.com/photo-1514501259756-f4b6fbeffa67&socialMedia=Linkedin&socialMediaUsername=theprinceraj';
-                    }
-                }, 1000);
-            };
         }
     }
 
@@ -54,25 +54,4 @@ document.addEventListener("DOMContentLoaded", function () {
         socialMediaInput,
         socialMediaUsernameInput
     ].forEach(element => element.addEventListener('input', updateImageSrc));
-
-    // Functionality for the copy link button
-    copyLinkBtn.addEventListener('click', () => {
-        
-        const isAnyFieldEmpty = ![imageLinkInput, nameInput, locationInput, titleInput].every(field => field.value.trim());
-        if (isAnyFieldEmpty) {
-            alert('Please fill in all required fields');
-            return;
-        }
-
-        if (!navigator.clipboard) {
-            alert('Your browser does not support the Clipboard API');
-            return;
-        }
-        navigator.clipboard.writeText(profileImage.src);
-
-        copyLinkBtn.textContent = 'Copied!';
-        setTimeout(() => {
-            copyLinkBtn.textContent = 'Copy Link';
-        }, 1000);
-    });
 });
