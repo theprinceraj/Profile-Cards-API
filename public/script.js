@@ -68,8 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
             alert('Your browser does not support the Clipboard API');
             return;
         }
-        const newSrc = profileImage.src;
-        navigator.clipboard.writeText(newSrc);
+        navigator.clipboard.writeText(profileImage.src);
 
         copyLinkBtn.textContent = 'Copied!';
         setTimeout(() => {
