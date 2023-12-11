@@ -57,7 +57,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Functionality for the copy link button
     copyLinkBtn.addEventListener('click', () => {
-        if (!imageLinkInput.value || !nameInput.value || !locationInput.value || !titleInput.value) {
+        
+        const isAnyFieldEmpty = ![imageLinkInput, nameInput, locationInput, titleInput].every(field => field.value.trim());
+        if (isAnyFieldEmpty) {
             alert('Please fill in all required fields');
             return;
         }
