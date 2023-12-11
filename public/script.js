@@ -15,12 +15,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function updateImageSrc() {
-        const imageLink = imageLinkInput.value;
-        const name = nameInput.value;
-        const location = locationInput.value;
-        const title = titleInput.value;
-        const socialMedia = socialMediaInput.value;
-        const socialMediaUsername = socialMediaUsernameInput.value;
+        const { value: imageLink } = imageLinkInput,
+            { value: name } = nameInput,
+            { value: location } = locationInput,
+            { value: title } = titleInput,
+            { value: socialMedia } = socialMediaInput,
+            { value: socialMediaUsername } = socialMediaUsernameInput;
+
 
         let newSrc = '';
         // Check if required fields are filled
