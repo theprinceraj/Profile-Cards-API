@@ -41,4 +41,24 @@ document.addEventListener("DOMContentLoaded", function () {
     titleInput.addEventListener('input', updateImageSrc);
     socialMediaInput.addEventListener('input', updateImageSrc);
     socialMediaUsernameInput.addEventListener('input', updateImageSrc);
+
+    copyLinkBtn.addEventListener('click', () => {
+        // Check if the required fields are filled
+        if (!imageLinkInput.value || !nameInput.value || !locationInput.value || !titleInput.value) {
+            alert('Please fill in all required fields');
+            return;
+        }
+
+        if (!navigator.clipboard) {
+            alert('Your browser does not support the Clipboard API');
+            return;
+        }
+        const newSrc = profileImage.src;
+        navigator.clipboard.writeText(newSrc);
+
+        copyLinkBtn.textContent = 'Copied!';
+        setTimeout(() => {
+            copyLinkBtn.textContent = 'Copy Link';
+        }, 1000);
+    });
 });
