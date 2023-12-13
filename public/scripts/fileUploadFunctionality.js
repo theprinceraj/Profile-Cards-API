@@ -3,23 +3,24 @@ const imageFileInput = document.querySelector('#inputImageFile');
 imageFileInput.addEventListener('change', async () => {
     const file = imageFileInput.files[0];
     if (file) {
-        const formData = new FormData();
-        formData.append('image', file);
-
         try {
-            const response = await fetch(`https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`, {
+            const formData = new FormData();
+            formData.append('image', file);
+
+            const serverResponse = await fetch('/upload', {
                 method: 'POST',
-                body: formData
+                body: formData,
             });
 
-            if (response.ok) {
-                const data = await response.json();
-                const imageUrl = data.data.url;
+            if (serverResponse.ok) {
+                const data = await serverResponse.json();
+                const imageUrl = data.imageUrl;
 
+                // yaha pe tum apna client side ka UI update karre ho with imageUrl
                 imageLinkInput.value = imageUrl;
                 imageLinkInput.disabled = true;
             } else {
-                throw new Error('Image upload failed');
+                throw new Error('Image upload failed on the server');
             }
         } catch (error) {
             console.error(error);
