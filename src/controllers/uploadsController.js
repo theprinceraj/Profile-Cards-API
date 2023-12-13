@@ -25,3 +25,7 @@ async function uploadChangeFile(req, res) {
         res.status(400).json({ error: 'Bad Request: No image provided' });
     }
 }
+
+module.exports = {
+    uploadChangeFile
+}
