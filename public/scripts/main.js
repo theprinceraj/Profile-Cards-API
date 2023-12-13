@@ -9,6 +9,9 @@ const profileImage = document.querySelector('#profile-image');
 let formFilledCorrectly = false;
 let timer;
 function updateImageSrc() {
+    if (timer) {
+        clearTimeout(timer);
+    }
     const imageLink = imageLinkInput.value.trim(),
         name = nameInput.value.trim(),
         location = locationInput.value.trim(),
@@ -29,7 +32,9 @@ function updateImageSrc() {
         formFilledCorrectly = true;
     } else {
         formFilledCorrectly = false;
-        playTimer();
+        timer = setTimeout(() => {
+            errorModal.show();
+        }, 5000);
     }
 }
 

@@ -5,30 +5,6 @@ const requiredFields = [imageLinkInput, nameInput, locationInput, titleInput];
 profileImage.onerror = () => {
     setTimeout(() => {
         validateRequiredField(imageLinkInput, nameInput, locationInput, titleInput);
-    }, 3000)
+    }, 10000)
     return;
 }
-
-function validateRequiredField(imageLinkInput, nameInput, locationInput, titleInput) {
-    if (!imageLinkInput.value?.trim() || !nameInput.value?.trim() || !locationInput.value?.trim() || !titleInput.value?.trim()) {
-        errorModal.show();
-        profileImage.src = defaultSrcUrl;
-        return;
-    }
-}
-
-let intervalID;
-const intervalFunction = () => {
-    if (formFilledCorrectly) {
-        validateRequiredField([imageLinkInput, nameInput, locationInput, titleInput]);
-        console.log("field validator run");
-    }
-    console.log("interval running");
-};
-intervalID = setInterval(intervalFunction, 5000);
-const pauseTimer = () => {
-    clearInterval(intervalID);
-};
-const playTimer = () => {
-    intervalID = setInterval(intervalFunction, 5000);
-};
