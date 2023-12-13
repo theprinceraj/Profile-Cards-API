@@ -5,8 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Cards Link Generator</title>
+
+    <!-- Meta tags for relevant embedding of website in other platforms -->
+    <meta name="title" content="Profile Cards Link Generator">
+    <meta name="description" content="Generate Link for Profile Cards">
+    <meta name="author" content="Prince Raj">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Favicon Files -->
     <!-- For most browsers -->
     <link rel="shortcut icon" href="favicon/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -62,9 +71,20 @@
             <div id="form-container">
                 <form class="row g-3">
                     <div class="col-md-12">
-                        <label for="inputImageLink" class="form-label" required>Image Link<span>*</span></label>
-                        <input type="url" class="form-control" id="inputImageLink"
-                            placeholder="https://shorturl.at/jnpBO">
+                        <label for="inputImageLink" class="form-label" required>Image or Image
+                            Link<span>*</span>
+                            <i class="bx bxs-info-circle ms-2" data-bs-toggle="tooltip" data-bs-placement="right"
+                                title="When an image is uploaded, its link will be generated and placed within the respective field. However, that field won't be editable anymore. Refresh the page if you want to add an image link yourself."></i>
+                        </label>
+                        <div class="input-group">
+                            <input type="url" class="form-control" id="inputImageLink"
+                                placeholder="https://shorturl.at/jnpBO">
+                            <label class="input-group-text" for="inputImageFile">
+                                <i class='bx bxs-cloud-upload'></i>
+                                <input type="file" class="form-control d-none" name="inputImageFile" id="inputImageFile"
+                                    accept="image/*">
+                            </label>
+                        </div>
                     </div>
                     <div class="col-md-12">
                         <label for="inputName" class="form-label" required>Name<span>*</span></label>
@@ -106,6 +126,7 @@
     <script src="scripts/main.js"></script>
     <script src="scripts/errorModalFunctionality.js"></script>
     <script src="scripts/copyLinkFunctionality.js"></script>
+    <script src="scripts/fileUploadFunctionality.js"></script>
 </body>
 
 </html>

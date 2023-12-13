@@ -28,7 +28,6 @@ function updateImageSrc() {
             newSrc = `https://profile-cards-api.vercel.app/api/profile?name=${name}&location=${location}&title=${title}&imageLink=${imageLink}`;
         }
         profileImage.src = newSrc;
-        pauseTimer();
         formFilledCorrectly = true;
     } else {
         formFilledCorrectly = false;
