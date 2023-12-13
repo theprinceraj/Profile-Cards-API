@@ -1,3 +1,4 @@
+const process = require('node:process');
 async function uploadChangeFile(req, res) {
     const file = req.body.image;
 
