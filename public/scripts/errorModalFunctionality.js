@@ -17,10 +17,18 @@ function validateRequiredField(imageLinkInput, nameInput, locationInput, titleIn
     }
 }
 
-setInterval(() => {
+let intervalID;
+const intervalFunction = () => {
     if (formFilledCorrectly) {
         validateRequiredField([imageLinkInput, nameInput, locationInput, titleInput]);
-        console.log("field validator run")
+        console.log("field validator run");
     }
-    console.log("interval running")
-}, 5000);
+    console.log("interval running");
+};
+intervalID = setInterval(intervalFunction, 5000);
+const pauseTimer = () => {
+    clearInterval(intervalID);
+};
+const playTimer = () => {
+    intervalID = setInterval(intervalFunction, 5000);
+};
