@@ -7,7 +7,7 @@ imageFileInput.addEventListener('change', async () => {
             const formData = new FormData();
             formData.append('image', file);
 
-            const serverResponse = await fetch('/upload', {
+            const serverResponse = await fetch('/profile/upload', {
                 method: 'POST',
                 body: formData,
             });
