@@ -11,9 +11,9 @@ imageFileInput.addEventListener('change', async () => {
                 method: 'POST',
                 body: formData,
             });
-
+            let data;
             if (serverResponse.ok) {
-                const data = await serverResponse.json();
+                data = await serverResponse.json();
                 const imageUrl = data.imageUrl;
 
                 // yaha pe tum apna client side ka UI update karre ho with imageUrl
