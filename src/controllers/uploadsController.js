@@ -6,7 +6,7 @@ async function uploadChangeFile(req, res) {
         formData.append('image', fileReceived);
 
         try {
-            const imgbbResponse = await fetch(`https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`, {
+            const imgbbResponse = await fetch(`https://api.imgbb.com/1/upload?key=09c741b9a8d83ae0d3a95d77a56129ef`, {
                 method: 'POST',
                 body: formData,
             });

@@ -1,11 +1,11 @@
 const imageFileInput = document.querySelector('#inputImageFile');
 
 imageFileInput.addEventListener('change', async () => {
-    const file = imageFileInput.files[0];
+    const imageFile = imageFileInput.files[0];
     if (file) {
         try {
             const formData = new FormData();
-            formData.append('image', file);
+            formData.append('image', imageFile);
 
             const serverResponse = await fetch('/api/upload', {
                 method: 'POST',
