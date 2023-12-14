@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const profileController = require('../controllers/profileController.js');
-const { uploadChangeFile } = require('../controllers/uploadsController.js');
+const uploadsController = require('../controllers/uploadsController.js');
 
 
 // Define a route to handle the root path
@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 // Define a route to render the profile card
 router.get('/profile', profileController.getProfileCard);
 
-router.post('/upload', uploadChangeFile);
+router.post('/upload', uploadsController.uploadChangeFile);
 
 module.exports = router;
 

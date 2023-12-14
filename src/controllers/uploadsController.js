@@ -5,7 +5,7 @@ async function uploadChangeFile(req, res) {
     if (file) {
         const formData = new FormData();
         formData.append('image', file);
-        console.log(process, "HIIIIIIIIIIIIIIIIIIIIII", process.env.IMGBB_API_KEY);
+
         try {
             const imgbbResponse = await fetch(`https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`, {
                 method: 'POST',
@@ -20,7 +20,10 @@ async function uploadChangeFile(req, res) {
             }
         } catch (error) {
             console.error(error);
-            res.status(500).json({ error: 'Internal Server Error' });
+            res.status(500).json({
+                error: 'Internal Server Error',
+                details: error
+            });
         }
     } else {
         res.status(400).json({ error: 'Bad Request: No image provided' });
