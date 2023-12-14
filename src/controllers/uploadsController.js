@@ -1,4 +1,4 @@
-async function uploadChangeFile(req, res) {
+async function uploadFileToIMG_BB_Server(req, res) {
     const base64versionImage = req.body.image;
     if (!base64versionImage) {
         return res.status(400).send('No file uploaded.');
@@ -31,5 +31,5 @@ async function uploadChangeFile(req, res) {
 }
 
 module.exports = {
-    uploadChangeFile
+    uploadFileToIMG_BB_Server
 }

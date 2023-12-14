@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 // Define a route to render the profile card
 router.get('/profile', profileController.getProfileCard);
 
-router.post('/upload', uploadsController.uploadChangeFile);
+router.post('/upload', uploadsController.uploadFileToIMG_BB_Server);
 
 module.exports = router;
 
