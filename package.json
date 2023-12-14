@@ -5,7 +5,7 @@
   "main": "api/index.js",
   "scripts": {
     "test": "node ./api/index.js",
-    "start": "start http://localhost:3000/api/profile?name=Prince%20Raj^&location=India^&socialMedia=Github^&socialMediaUsername=theprinceraj^&title=Web%20Developer^&skills=HTML,CSS,JavaScript^&imageLink=https://images.unsplash.com/photo-1514501259756-f4b6fbeffa67 && node ./api/index.js",
+    "start": "node ./api/index.js",
     "build": "npm i"
   },
   "keywords": [],
@@ -16,7 +16,6 @@
     "canvas-constructor": "^7.0.1",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "multer": "^1.4.5-lts.1",
     "node-fetch": "^2.7.0"
   },
   "devDependencies": {

@@ -4,19 +4,19 @@ imageFileInput.addEventListener('change', async () => {
     const imageFile = imageFileInput.files[0];
     if (imageFile) {
         try {
-            const formData = new FormData();
-            formData.append('image', imageFile);
-
-            const serverResponse = await fetch('/api/upload', {
+            const base64String = await convertToBase64(imageFile);
+            const requestOptions = {
                 method: 'POST',
-                body: formData,
-            });
-            let data;
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ image: base64String }),
+            };
+
+            const serverResponse = await fetch('/api/upload', requestOptions);
+
             if (serverResponse.ok) {
-                data = await serverResponse.json();
+                const data = await serverResponse.json();
                 const imageUrl = data.imageUrl;
 
-                // yaha pe tum apna client side ka UI update karre ho with imageUrl
                 imageLinkInput.value = imageUrl;
                 imageLinkInput.disabled = true;
             } else {
@@ -27,3 +27,18 @@ imageFileInput.addEventListener('change', async () => {
         }
     }
 });
+
+async function convertToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+            const base64String = reader.result.split(',')[1];
+            resolve(base64String);
+        }
+        reader.onerror = (error) => {
+            reject(error);
+        }
+
+        reader.readAsDataURL(file);
+    })
+}

@@ -3,12 +3,12 @@ const app = express();
 require('dotenv').config();
 const port = process.env.PORT || 3000;
 
-// Define your API routes
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
+app.use(express.static('public'));
+
 app.use('/api', require('../src/routes/profile'));
 
-app.get('/', (req, res) => {
-    res.send("Yea, I am here!");
-});
 
 // Start the server
 app.listen(port, () => {

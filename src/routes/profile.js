@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const multer = require('multer');
-const upload = multer();
+
 const profileController = require('../controllers/profileController.js');
 const uploadsController = require('../controllers/uploadsController.js');
 
@@ -14,7 +13,7 @@ router.get('/', (req, res) => {
 // Define a route to render the profile card
 router.get('/profile', profileController.getProfileCard);
 
-router.post('/upload', upload.single('image'), uploadsController.uploadChangeFile);
+router.post('/upload', uploadsController.uploadChangeFile);
 
 module.exports = router;
 
