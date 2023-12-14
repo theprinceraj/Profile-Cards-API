@@ -1,7 +1,8 @@
 async function uploadChangeFile(req, res) {
     const fileReceived = req.file;
-
-    if (fileReceived) {
+    if (!fileReceived) {
+        return res.status(400).send('No file uploaded.');
+    } else {
         const formData = new FormData();
         formData.append('image', fileReceived);
 
@@ -23,8 +24,6 @@ async function uploadChangeFile(req, res) {
                 error: 'Internal Server Error'
             });
         }
-    } else {
-        res.status(400).json({ error: 'Bad Request: No image provided' });
     }
 }
 
