@@ -23,7 +23,7 @@ imageFileInput.addEventListener('change', async () => {
                 throw new Error('Image upload failed on the server');
             }
         } catch (error) {
-            console.error(error);
+            console.log(error);
         }
     }
 });
