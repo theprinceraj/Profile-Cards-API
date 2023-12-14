@@ -20,7 +20,7 @@ imageFileInput.addEventListener('change', async () => {
                 imageLinkInput.value = imageUrl;
                 imageLinkInput.disabled = true;
             } else {
-                throw new Error('Image upload failed on the server', data, serverResponse);
+                throw new Error('Image upload failed on the server.');
             }
         } catch (error) {
             console.log(error);
