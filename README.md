@@ -1,6 +1,6 @@
 # Profile Cards API
 
-[![HitCount](https://hits.dwyl.com/theprinceraj/Profile-Cards-API.svg?style=flat-square)](http://hits.dwyl.com/theprinceraj/Profile-Cards-API)
+[![HitCount](https://hits.dwyl.com/theprinceraj/Profile-Cards-API.svg?style=flat)](http://hits.dwyl.com/theprinceraj/Profile-Cards-API)
 
 ![Profile Card Example](https://profile-cards-api.vercel.app/api/profile?name=Prince%20Raj&location=India&title=Software%20Developer&imageLink=https://images.unsplash.com/photo-1514501259756-f4b6fbeffa67&socialMedia=Linkedin&socialMediaUsername=theprinceraj)
 
