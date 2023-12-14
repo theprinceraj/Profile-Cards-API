@@ -8,7 +8,16 @@
     "start": "node ./api/index.js",
     "build": "npm i"
   },
-  "keywords": ["profile card", "image generation", "API", "canvas"],
+  "keywords": [
+    "profile card",
+    "image generation",
+    "API",
+    "canvas"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theprinceraj/Profile-Cards-API"
+  },
   "author": "theprinceraj",
   "license": "ISC",
   "dependencies": {
