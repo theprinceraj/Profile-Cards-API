@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 // Define a route to render the profile card
 router.get('/profile', profileController.getProfileCard);
 
-router.post('/upload', uploadsController.uploadChangeFile);
+router.post('/upload', upload.single('image'), uploadsController.uploadChangeFile);
 
 module.exports = router;
 

@@ -1,10 +1,10 @@
 const process = require('node:process');
 async function uploadChangeFile(req, res) {
-    const file = req.body.image;
+    const fileReceived = req.file;
 
-    if (file) {
+    if (fileReceived) {
         const formData = new FormData();
-        formData.append('image', file);
+        formData.append('image', fileReceived);
 
         try {
             const imgbbResponse = await fetch(`https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`, {
@@ -21,8 +21,7 @@ async function uploadChangeFile(req, res) {
         } catch (error) {
             console.error(error);
             res.status(500).json({
-                error: 'Internal Server Error',
-                details: error
+                error: 'Internal Server Error'
             });
         }
     } else {
