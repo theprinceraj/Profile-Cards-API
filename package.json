@@ -8,7 +8,7 @@
     "start": "node ./api/index.js",
     "build": "npm i"
   },
-  "keywords": [],
+  "keywords": ["profile card", "image generation", "API", "canvas"],
   "author": "theprinceraj",
   "license": "ISC",
   "dependencies": {
