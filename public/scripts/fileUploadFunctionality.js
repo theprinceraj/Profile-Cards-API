@@ -1,28 +1,44 @@
 const imageFileInput = document.querySelector('#inputImageFile');
 
 imageFileInput.addEventListener('change', async () => {
-    const file = imageFileInput.files[0];
-    if (file) {
-        const formData = new FormData();
-        formData.append('image', file);
-
+    const imageFile = imageFileInput.files[0];
+    if (imageFile) {
         try {
-            const response = await fetch(`https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`, {
+            const base64String = await convertToBase64(imageFile);
+            const requestOptions = {
                 method: 'POST',
-                body: formData
-            });
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ image: base64String }),
+            };
 
-            if (response.ok) {
-                const data = await response.json();
-                const imageUrl = data.data.url;
+            const serverResponse = await fetch('/api/upload', requestOptions);
+
+            if (serverResponse.ok) {
+                const data = await serverResponse.json();
+                const imageUrl = data.imageUrl;
 
                 imageLinkInput.value = imageUrl;
                 imageLinkInput.disabled = true;
             } else {
-                throw new Error('Image upload failed');
+                throw new Error('Image upload failed on the server.');
             }
         } catch (error) {
-            console.error(error);
+            console.log(error);
         }
     }
 });
+
+async function convertToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+            const base64String = reader.result.split(',')[1];
+            resolve(base64String);
+        }
+        reader.onerror = (error) => {
+            reject(error);
+        }
+
+        reader.readAsDataURL(file);
+    })
+}
