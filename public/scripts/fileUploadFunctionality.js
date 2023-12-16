@@ -12,7 +12,7 @@ imageFileInput.addEventListener('change', async () => {
             };
 
             const serverResponse = debounceFnCall(fetch('/api/upload', requestOptions));
-
+            console.log(serverResponse);
             if (serverResponse.ok) {
                 const data = await serverResponse.json();
                 const imageUrl = data.imageUrl;
