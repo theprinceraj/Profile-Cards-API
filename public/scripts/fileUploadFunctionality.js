@@ -10,8 +10,8 @@ imageFileInput.addEventListener('change', async () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ image: base64String }),
             };
-            const debouncedUploadFetchFn = debounceFnCall(() => fetch('/api/upload', requestOptions));
-            const serverResponse = debouncedUploadFetchFn();
+
+            const serverResponse = debounceFnCall(() => fetch('/api/upload', requestOptions));
 
             if (serverResponse.ok) {
                 const data = await serverResponse.json();
