@@ -1,17 +1,6 @@
-const imageLinkInput = document.querySelector('#inputImageLink');
-const nameInput = document.querySelector('#inputName');
-const locationInput = document.querySelector('#inputLocation');
-const titleInput = document.querySelector('#inputTitle');
-const socialMediaInput = document.querySelector('#inputSocialMedia');
-const socialMediaUsernameInput = document.querySelector('#inputSocialMediaUsername');
-const profileImage = document.querySelector('#profile-image');
-
-let formFilledCorrectly = false;
-let timer;
 function updateImageSrc() {
-    if (timer) {
-        clearTimeout(timer);
-    }
+    clearTimeout(timer);
+
     const imageLink = imageLinkInput.value.trim(),
         name = nameInput.value.trim(),
         location = locationInput.value.trim(),
@@ -33,8 +22,12 @@ function updateImageSrc() {
         formFilledCorrectly = false;
         timer = setTimeout(() => {
             errorModal.show();
+            profileImage.src = defaultSrcUrl;
         }, 5000);
     }
+}
+const debounceUpdateImgSrc = () => {
+    debounceFnCall(updateImageSrc, 1000);
 }
 
 [
@@ -44,4 +37,4 @@ function updateImageSrc() {
     titleInput,
     socialMediaInput,
     socialMediaUsernameInput
-].forEach(element => element.addEventListener('input', debounceFnCall(updateImageSrc())));
+].forEach(element => element.addEventListener('input', debounceUpdateImgSrc));

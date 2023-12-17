@@ -1,5 +1,3 @@
-const imageFileInput = document.querySelector('#inputImageFile');
-
 imageFileInput.addEventListener('change', async () => {
     const imageFile = imageFileInput.files[0];
     if (imageFile) {
