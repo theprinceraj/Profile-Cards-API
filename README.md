@@ -26,7 +26,7 @@ GET https://profile-cards-api.vercel.app/api/profile?name=Prince%20Raj&location=
 This will return an image of a profile card with the provided information.
 
 ## Latest Updates
-1. Added front-end interface website for forming and copying direct links of the generated images instead of manually editing links. The webpage is available at ![Profile Cards API Frontend](https://profile-cards-api.vercel.app/). The frontend website also shows a live preview based on input field values in real time.
+1. Added front-end interface website for forming and copying direct links of the generated images instead of manually editing links. The webpage is available at [Profiles Cards API](https://profile-cards-api.vercel.app/) Frontend. The frontend website also shows a live preview based on input field values in real time.
 2. Implemented debouncing logic to API calls made on the front-end website to show a live preview only when the user stops typing or editing a field.
 
 ## Customization
