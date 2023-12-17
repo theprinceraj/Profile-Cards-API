@@ -10,7 +10,7 @@ const copyLinkBtn = document.querySelector('#copyLinkBtn');
 
 const imageFileInput = document.querySelector('#inputImageFile');
 
-let formFilledCorrectly = false;
+let formFilledCorrectlyOnce = false;
 let errorTimer;
 
 let debounceTimer;

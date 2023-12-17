@@ -1,5 +1,5 @@
 function updateImageSrc() {
-    clearTimeout(timer);
+    clearTimeout(errorTimer);
 
     const imageLink = imageLinkInput.value.trim(),
         name = nameInput.value.trim(),
@@ -11,15 +11,14 @@ function updateImageSrc() {
     let newSrc = '';
     // Check if required fields are filled
     if (imageLink && name && location && title) {
+        formFilledCorrectlyOnce = true;
         if (socialMedia && socialMediaUsername) {
             newSrc = `https://profile-cards-api.vercel.app/api/profile?name=${name}&location=${location}&title=${title}&imageLink=${imageLink}&socialMedia=${socialMedia}&socialMediaUsername=${socialMediaUsername}`;
         } else {
             newSrc = `https://profile-cards-api.vercel.app/api/profile?name=${name}&location=${location}&title=${title}&imageLink=${imageLink}`;
         }
         profileImage.src = newSrc;
-        formFilledCorrectly = true;
-    } else {
-        formFilledCorrectly = false;
+    } else if (formFilledCorrectlyOnce) {
         errorTimer = setTimeout(() => {
             errorModal.show();
             profileImage.src = defaultSrcUrl;
