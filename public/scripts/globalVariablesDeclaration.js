@@ -9,7 +9,7 @@ const profileImage = document.querySelector('#profile-image');
 const imageFileInput = document.querySelector('#inputImageFile');
 
 let formFilledCorrectly = false;
-let timer;
+let errorTimer;
 
 let debounceTimer;
 
