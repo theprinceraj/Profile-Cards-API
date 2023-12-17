@@ -6,6 +6,8 @@ const socialMediaInput = document.querySelector('#inputSocialMedia');
 const socialMediaUsernameInput = document.querySelector('#inputSocialMediaUsername');
 const profileImage = document.querySelector('#profile-image');
 
+const copyLinkBtn = document.querySelector('#copyLinkBtn');
+
 const imageFileInput = document.querySelector('#inputImageFile');
 
 let formFilledCorrectly = false;

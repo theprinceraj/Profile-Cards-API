@@ -1,4 +1,4 @@
-document.querySelector('#copyLinkBtn').addEventListener('click', () => {
+copyLinkBtn.addEventListener('click', () => {
 
     const [imageLinkInput, nameInput, locationInput, titleInput, profileImage] = ['#inputImageLink',
         '#inputName',
