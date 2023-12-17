@@ -20,7 +20,7 @@ function updateImageSrc() {
         formFilledCorrectly = true;
     } else {
         formFilledCorrectly = false;
-        timer = setTimeout(() => {
+        errorTimer = setTimeout(() => {
             errorModal.show();
             profileImage.src = defaultSrcUrl;
         }, 5000);
