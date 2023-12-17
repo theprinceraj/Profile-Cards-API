@@ -44,4 +44,4 @@ function updateImageSrc() {
     titleInput,
     socialMediaInput,
     socialMediaUsernameInput
-].forEach(element => element.addEventListener('input', updateImageSrc));
+].forEach(element => element.addEventListener('input', debounceFnCall(updateImageSrc())));
