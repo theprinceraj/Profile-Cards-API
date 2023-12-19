@@ -3,6 +3,7 @@ const router = express.Router();
 
 const profileController = require('../controllers/profileController.js');
 const uploadsController = require('../controllers/uploadsController.js');
+const shortLinksController = require('../controllers/shortLinksController.js');
 
 
 // Define a route to handle the root path
@@ -14,6 +15,8 @@ router.get('/', (req, res) => {
 router.get('/profile', profileController.getProfileCard);
 
 router.post('/upload', uploadsController.uploadFileToIMG_BB_Server);
+
+router.use('/shorten', shortLinksController.shortenUrl);
 
 module.exports = router;
 
