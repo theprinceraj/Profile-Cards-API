@@ -33,7 +33,6 @@ export default async function updateDatabase(originalUrl, shortUrl) {
         console.log("Document updated with ID: ", docRef.id);
     } catch (e) { console.error(e); }
 }
-// updateDatabase("lol", "lallu");
 
 export async function fetchLongUrl(shortUrl) {
     try {
@@ -46,4 +45,3 @@ export async function fetchLongUrl(shortUrl) {
         }
     } catch (error) { console.error(error); }
 }
-// console.log(await fetchLongUrl("lallu"));
