@@ -25,7 +25,6 @@ const db = getFirestore(app);
  */
 export default async function updateDatabase(originalUrl, shortUrl) {
     try {
-        console.log(firebaseConfig)
         const docRef = await addDoc(collection(db, "LinkPairs"), {
             longForm: originalUrl,
             shortForm: shortUrl,

@@ -15,7 +15,7 @@ export default async function shortenUrl(req, res) {
         baseUrl = `${req.protocol}://${req.get('host')}`;
     }
     const uniqueId = generateUniqueId(10);
-    const shortUrl = `${baseUrl}/${uniqueId}`;
+    const shortUrl = `${baseUrl}/c/${uniqueId}`;
 
     updateDatabase(originalUrl, shortUrl);
 
