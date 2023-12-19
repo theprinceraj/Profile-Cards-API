@@ -64,8 +64,9 @@ body {
 #btn-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: space-between;
+    /* gap: 1rem; */
+    flex-direction: row;
 }
 
 label span {
@@ -92,5 +93,15 @@ label span {
 
     #form-container {
         width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    #btn-container {
+        flex-direction: column;
+    }
+
+    #btn-container>button:nth-child(1) {
+        margin-bottom: 1rem;
     }
 }
