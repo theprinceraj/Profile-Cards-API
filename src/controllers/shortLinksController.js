@@ -1,4 +1,4 @@
-import updateDatabase from '../utilities/database-updater.js';
+import updateDatabase from '../utilities/database-functions.js';
 
 /**
  * Generates a shortened URL based on the provided long URL.
