@@ -18,6 +18,7 @@
     "type": "git",
     "url": "https://github.com/theprinceraj/Profile-Cards-API"
   },
+  "type": "module",
   "author": "theprinceraj",
   "license": "ISC",
   "dependencies": {

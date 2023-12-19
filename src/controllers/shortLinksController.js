@@ -1,6 +1,13 @@
-const { updateDatabase } = require('../utilities/database-updater.mjs');
+import updateDatabase from '../utilities/database-updater.js';
 
-async function shortenUrl(req, res) {
+/**
+ * Generates a shortened URL based on the provided long URL.
+ *
+ * @param {Object} req - The request object containing the long URL.
+ * @param {Object} res - The response object.
+ * @return {Object} The response JSON object containing the shortened URL and unique ID.
+ */
+export default async function shortenUrl(req, res) {
     const originalUrl = req.body.longUrl;
     let baseUrl = 'http://localhost:3000';
     if (req) {
@@ -21,8 +28,4 @@ function generateUniqueId(idLength) {
         uniqueId += units[Math.floor(Math.random() * unitsLength)];
     }
     return uniqueId;
-}
-
-module.exports = {
-    shortenUrl
 }

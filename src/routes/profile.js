@@ -1,9 +1,9 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
-const profileController = require('../controllers/profileController.js');
-const uploadsController = require('../controllers/uploadsController.js');
-const shortLinksController = require('../controllers/shortLinksController.js');
+import profileController from '../controllers/profileController.js';
+import uploadsController from '../controllers/uploadsController.js';
+import shortLinksController from '../controllers/shortLinksController.js';
 
 
 // Define a route to handle the root path
@@ -12,11 +12,10 @@ router.get('/', (req, res) => {
 });
 
 // Define a route to render the profile card
-router.get('/profile', profileController.getProfileCard);
+router.get('/profile', profileController);
 
-router.post('/upload', uploadsController.uploadFileToIMG_BB_Server);
+router.post('/upload', uploadsController);
 
-router.use('/shorten', shortLinksController.shortenUrl);
+router.use('/shorten', shortLinksController);
 
-module.exports = router;
-
+export default router;

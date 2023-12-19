@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
-import dotenv from 'dotenv';
-dotenv.config();
+// import dotenv from 'dotenv';
+// dotenv.config();
 const firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
     authDomain: process.env.FIREBASE_AUTH_DOMAIN,
@@ -16,6 +16,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+/**
+ * Updates the database with a new link pair.
+ *
+ * @param {string} originalUrl - The original URL to be stored in the database.
+ * @param {string} shortUrl - The short URL to be stored in the database.
+ * @return {Promise<void>} - A promise that resolves when the database is successfully updated.
+ */
 export default async function updateDatabase(originalUrl, shortUrl) {
     try {
         const docRef = await addDoc(collection(db, "LinkPairs"), {
