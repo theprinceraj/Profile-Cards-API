@@ -9,6 +9,9 @@ app.use(express.static('public'));
 
 app.use('/api', require('../src/routes/profile'));
 
+app.get('/:shortId', (req, res) => {
+    
+});
 
 // Start the server
 app.listen(port, () => {
