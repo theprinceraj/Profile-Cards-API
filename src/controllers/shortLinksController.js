@@ -8,7 +8,8 @@ import updateDatabase from '../utilities/database-updater.js';
  * @return {Object} The response JSON object containing the shortened URL and unique ID.
  */
 export default async function shortenUrl(req, res) {
-    const originalUrl = req.body.longUrl;
+    const originalUrl = req.query.longUrl;
+    console.log(originalUrl)
     let baseUrl = 'http://localhost:3000';
     if (req) {
         baseUrl = `${req.protocol}://${req.get('host')}`;
