@@ -10,7 +10,7 @@ shortenLinkBtn.addEventListener('click', async () => {
         return;
     }
 
-    const res = await fetch(`/api/shorten?longUrl=${profileImage.src}`);
+    const res = await fetch(`/api/shorten?longUrl=${encodeURIComponent(profileImage.src)}`);
     const data = await res.json();
 
     navigator.clipboard.writeText(data.shortUrl);

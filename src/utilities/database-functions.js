@@ -33,6 +33,12 @@ export default async function updateDatabase(originalUrl, shortUrl) {
     } catch (e) { console.error(e); }
 }
 
+/**
+ * Fetches the long URL associated with a given short URL.
+ *
+ * @param {string} shortUrl - The short URL to fetch the long URL for.
+ * @return {string} The long URL associated with the given short URL.
+ */
 export async function fetchLongUrl(shortUrl) {
     try {
         const querySnapshot = await getDocs(collection(db, "LinkPairs"));
