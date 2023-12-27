@@ -25,16 +25,11 @@ const db = getFirestore(app);
  */
 export default async function updateDatabase(originalUrl, shortUrl) {
     console.log(firebaseConfig)
-    try {
-        const docRef = await addDoc(collection(db, "LinkPairs"), {
-            longForm: originalUrl,
-            shortForm: shortUrl,
-        })
-        console.log("Document updated with ID: ", docRef.id);
-    } catch (e) {
-        console.error(e);
-        throw new Error(e);
-    }
+    const docRef = await addDoc(collection(db, "LinkPairs"), {
+        longForm: originalUrl,
+        shortForm: shortUrl,
+    })
+    console.log("Document updated with ID: ", docRef.id);
 }
 
 /**
