@@ -4,6 +4,7 @@ const router = express.Router();
 import { fetchLongUrl } from '../utilities/database-functions.js';
 router.use('/c/:shortId', async (req, res) => {
     const shortId_ = req.params.shortId;
+    console.log(shortId_);
     if (!shortId_) {
         return res.status(400).send('Invalid shortId');
     }
