@@ -25,10 +25,12 @@ const db = getFirestore(app);
  */
 export default async function updateDatabase(originalUrl, shortUrl) {
     console.log(firebaseConfig)
+    console.log("WHAT IS WRONG!!?? BROOOOOOO");
     const docRef = await addDoc(collection(db, "LinkPairs"), {
         longForm: originalUrl,
         shortForm: shortUrl,
     })
+    console.log("WHAT IS WRONG!!??");
     console.log("Document updated with ID: ", docRef.id);
 }
 
