@@ -9,7 +9,7 @@ import updateDatabase from '../utilities/database-functions.js';
  */
 export default async function shortenUrl(req, res) {
     const originalUrl = req.query.longUrl;
-    console.log(originalUrl)
+    console.log('\n' + originalUrl + '\n')
     let baseUrl = 'http://localhost:3000';
     if (req) {
         baseUrl = `${req.protocol}://${req.get('host')}`;
@@ -18,6 +18,8 @@ export default async function shortenUrl(req, res) {
     const shortUrl = `${baseUrl}/c/${uniqueId}`;
 
     updateDatabase(originalUrl, shortUrl);
+
+    console.log('\n' + shortUrl + '\n');
 
     res.json({ shortUrl, uniqueId });
 }
