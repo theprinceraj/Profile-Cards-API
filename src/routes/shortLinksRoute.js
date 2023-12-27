@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 
 import { fetchLongUrl } from '../utilities/database-functions.js';
-router.use('/c/:shortId', async (req, res) => {
+router.use('/:shortId', async (req, res) => {
     const shortId_ = req.params.shortId;
     console.log('\n' + shortId_ + '\n');
     if (!shortId_) {
