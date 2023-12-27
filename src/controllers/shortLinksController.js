@@ -16,7 +16,7 @@ export default async function shortenUrl(req, res) {
     const uniqueId = generateUniqueId(10);
     const shortUrl = `${baseUrl}/c/${uniqueId}`;
 
-    updateDatabase(originalUrl, shortUrl);
+    await updateDatabase(originalUrl, shortUrl);
 
     console.log('\n' + shortUrl + '\n');
 
