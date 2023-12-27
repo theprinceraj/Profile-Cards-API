@@ -30,7 +30,10 @@ export default async function updateDatabase(originalUrl, shortUrl) {
             shortForm: shortUrl,
         })
         console.log("Document updated with ID: ", docRef.id);
-    } catch (e) { console.error(e); }
+    } catch (e) {
+        console.error(e);
+        throw new Error(e);
+    }
 }
 
 /**
