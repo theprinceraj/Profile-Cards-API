@@ -24,17 +24,10 @@ const db = getFirestore(app);
  * @return {Promise<void>} - A promise that resolves when the database is successfully updated.
  */
 export default async function updateDatabase(originalUrl, shortUrl) {
-    console.log(firebaseConfig)
-    console.log("WHAT IS WRONG!!?? BROOOOOOO");
-    console.log(await addDoc(collection(db, "LinkPairs"), {
-        longForm: originalUrl,
-        shortForm: shortUrl,
-    }));
     const docRef = await addDoc(collection(db, "LinkPairs"), {
         longForm: originalUrl,
         shortForm: shortUrl,
     })
-    console.log("WHAT IS WRONG!!??");
     console.log("Document updated with ID: ", docRef.id);
 }
 

@@ -8,7 +8,7 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use(express.static('public'));
 
-import apiRoute from '../src/routes/profile.js';
+import apiRoute from '../src/routes/_api.js';
 app.use('/api', apiRoute);
 
 import { fetchLongUrl } from '../src/utilities/database-functions.js';
