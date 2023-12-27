@@ -14,22 +14,22 @@ app.use('/api', apiRoute);
 import shortLinksRoute from '../src/routes/shortLinksRoute.js';
 app.use('/c', shortLinksRoute);
 
-import { fetchLongUrl } from '../src/utilities/database-functions.js';
-app.get('/c/:shortId', async (req, res) => {
-    const shortId_ = req.params.shortId;
-    if (!shortId_) {
-        return res.status(400).send('Invalid shortId');
-    }
+// import { fetchLongUrl } from '../src/utilities/database-functions.js';
+// app.get('/c/:shortId', async (req, res) => {
+//     const shortId_ = req.params.shortId;
+//     if (!shortId_) {
+//         return res.status(400).send('Invalid shortId');
+//     }
 
-    let baseUrl = 'http://localhost:3000';
-    if (req) {
-        baseUrl = `${req.protocol}://${req.get('host')}`;
-    }
-    const shortUrl = `${baseUrl}/c/${shortId_}`;
+//     let baseUrl = 'http://localhost:3000';
+//     if (req) {
+//         baseUrl = `${req.protocol}://${req.get('host')}`;
+//     }
+//     const shortUrl = `${baseUrl}/c/${shortId_}`;
 
-    const longUrl = await fetchLongUrl(shortUrl);
-    res.redirect(longUrl);
-});
+//     const longUrl = await fetchLongUrl(shortUrl);
+//     res.redirect(longUrl);
+// });
 
 // Start the server
 app.listen(port, () => {
