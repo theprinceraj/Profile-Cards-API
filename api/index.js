@@ -8,8 +8,11 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use(express.static('public'));
 
-import apiRoute from '../src/routes/_api.js';
+import apiRoute from '../src/routes/apiRoute.js';
 app.use('/api', apiRoute);
+
+import shortLinksRoute from '../src/routes/shortLinksRoute.js';
+app.use('/c', shortLinksRoute);
 
 import { fetchLongUrl } from '../src/utilities/database-functions.js';
 app.get('/c/:shortId', async (req, res) => {
