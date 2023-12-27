@@ -1,5 +1,5 @@
 import express from "express";
-const router = express.router();
+const router = express.Router();
 
 import { fetchLongUrl } from '../utilities/database-functions.js';
 router.use('/c/:shortId', async (req, res) => {
