@@ -1,5 +1,8 @@
 {
-  "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }],
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api" },
+    { "source": "/c/(.*)", "destination": "/c" }
+  ],
   "functions": {
     "api/index.js": {
       "includeFiles": "_template/**"
