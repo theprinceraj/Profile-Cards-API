@@ -1,14 +1,18 @@
-const express = require('express');
+import express from 'express';
 const app = express();
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 const port = process.env.PORT || 3000;
 
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use(express.static('public'));
 
-app.use('/api', require('../src/routes/profile'));
+import apiRoute from '../src/routes/apiRoute.js';
+app.use('/api', apiRoute);
 
+import shortLinksRoute from '../src/routes/shortLinksRoute.js';
+app.use('/c', shortLinksRoute);
 
 // Start the server
 app.listen(port, () => {
@@ -18,4 +22,4 @@ app.listen(port, () => {
 });
 
 
-module.exports = app;
+export default app;

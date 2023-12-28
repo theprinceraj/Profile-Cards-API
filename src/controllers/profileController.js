@@ -1,7 +1,11 @@
-const { Canvas, loadFont } = require('canvas-constructor/cairo');
-const { fetchAndLoadImage } = require('../utilities/fetch-load-image.js');
-const { logError } = require('../utilities/error-logger.js');
-const { join } = require('path');
+import { Canvas, loadFont } from 'canvas-constructor/cairo';
+import { fetchAndLoadImage } from '../utilities/fetch-load-image.js';
+import { logError } from '../utilities/error-logger.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+import { join } from 'path';
 
 const fontFiles = [
     'Montserrat-Regular.ttf',
@@ -103,7 +107,7 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
  * @param {Object} res - The response object.
  * @return {Promise} A Promise that resolves when the image is sent as a response.
  */
-async function getProfileCard(req, res) {
+export default async function getProfileCard(req, res) {
     try {
         const {
             imageLink = 'https://i.ibb.co/2tgNv2d/man-157699-640.png',
@@ -137,8 +141,3 @@ async function getProfileCard(req, res) {
         res.status(500).send('Internal Server Error');
     }
 }
-
-// export getProfileCard function
-module.exports = {
-    getProfileCard,
-};

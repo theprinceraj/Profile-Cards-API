@@ -1,4 +1,4 @@
-const { loadImage } = require('canvas-constructor/cairo');
+import { loadImage } from 'canvas-constructor/cairo';
 
 /**
  * Fetches and loads an image from the specified URL.
@@ -6,7 +6,7 @@ const { loadImage } = require('canvas-constructor/cairo');
  * @param {string} url - The URL of the image to fetch and load.
  * @return {Promise<Image|null>} A promise that resolves to the loaded image if successful, or null if there was an error.
  */
-async function fetchAndLoadImage(url) {
+export async function fetchAndLoadImage(url) {
   try {
     // Check if the response status is okay before loading the image
     return await loadImage(url);
@@ -15,7 +15,3 @@ async function fetchAndLoadImage(url) {
     return null;
   }
 }
-
-module.exports = {
-  fetchAndLoadImage,
-};

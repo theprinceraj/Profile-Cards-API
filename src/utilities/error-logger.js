@@ -5,7 +5,7 @@
  * @param {Object} additionalInfo - Additional information to be included in the error log.
  * @return {undefined} This function does not return anything.
  */
-function logError(error, additionalInfo = {}) {
+export function logError(error, additionalInfo = {}) {
     try {
         // Get current timestamp in IST
         const timestamp = getISTTimestamp();
@@ -34,8 +34,4 @@ function logError(error, additionalInfo = {}) {
 function getISTTimestamp() {
     const options = { timeZone: 'Asia/Kolkata', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
     return new Date().toLocaleString('en-IN', options);
-}
-
-module.exports = {
-    logError,
 }

@@ -15,7 +15,7 @@
  * @param {Object} res - The response object.
  * @return {Promise<void>} The function does not return anything.
  */
-async function uploadFileToIMG_BB_Server(req, res) {
+export default async function uploadFileToIMG_BB_Server(req, res) {
     const base64versionImage = req.body.image;
     if (!base64versionImage) {
         return res.status(400).send('No file uploaded.');
@@ -45,8 +45,4 @@ async function uploadFileToIMG_BB_Server(req, res) {
             });
         }
     }
-}
-
-module.exports = {
-    uploadFileToIMG_BB_Server
 }
