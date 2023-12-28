@@ -1,6 +1,10 @@
 import express from "express";
 const router = express.Router();
 
+router.get('/', (req, res) => {
+    res.send('API is running.');
+});
+
 import { fetchLongUrl } from '../utilities/database-functions.js';
 router.get('/:shortId', async (req, res) => {
     console.log('\n' + "VOXELLI ❤️ SARCASTER" + '\n');
