@@ -1,7 +1,7 @@
 {
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api" },
-    { "source": "/c/:shortId", "destination": "/api/short-links-handler.js"  }
+    { "source": "/c/:shortId", "destination": "/api/short-links-handler.js"}
   ],
   "functions": {
     "api/index.js": {

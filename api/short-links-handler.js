@@ -1,5 +1,6 @@
 export default async function handler(req, res) {
     if (req.method === 'GET') {
+        const shortId_ = req.params.shortId;
         if (!shortId_) {
             return res.status(400).send('Invalid shortId');
         }
@@ -12,7 +13,7 @@ export default async function handler(req, res) {
 
         const longUrl = await fetchLongUrl(shortUrl);
 
-        res.writeHead(307, { Location: longUrl });
+        res.redirect(307, { Location: longUrl });
         return res.end();
     }
 }
