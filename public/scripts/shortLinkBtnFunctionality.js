@@ -1,6 +1,8 @@
 let currentShortenedLink = '';
 shortenLinkBtn.addEventListener('click', async () => {
-    validateInputFields();
+    if(!validateInputFields()){
+        return;
+    }
     if (!navigator.clipboard) {
         alert('Your browser does not support the Clipboard API');
         return;
