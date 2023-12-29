@@ -1,6 +1,6 @@
 let currentShortenedLink = '';
 shortenLinkBtn.addEventListener('click', async () => {
-    if(!validateInputFields()){
+    if (!validateInputFields()) {
         return;
     }
     if (!navigator.clipboard) {
@@ -16,12 +16,10 @@ shortenLinkBtn.addEventListener('click', async () => {
         const data = await res.json();
         currentLinkShortenedSuccessfully = true;
         currentShortenedLink = data.shortUrl;
-        navigator.clipboard.writeText(currentShortenedLink);
-    } else {
-        navigator.clipboard.writeText(currentShortenedLink);
-    }
-
-    setTimeout(() => {
+        await navigator.clipboard.writeText(currentShortenedLink);
         shortenLinkBtn.textContent = 'Copied';
-    }, 1000);
+    } else {
+        await navigator.clipboard.writeText(currentShortenedLink);
+        shortenLinkBtn.textContent = 'Copied';
+    }
 });
