@@ -44,14 +44,6 @@ async function generateProfileCard(image, name, location, title, socialMedia, so
             .setTextFont('12px Montserrat-SemiBold')
             .printText(title, 175, 295) // Title
 
-        // Draw skills
-        // canvas.setColor('#B3B8CD')
-        // canvas.font = '14px Montserrat-SemiBold'
-        // const skillsList = skills.split(',')
-        // skillsList.forEach((skill, index) => {
-        //     canvas.fillText(skill, 100, 360 + index * 20) // Adjust the position as needed
-        // })
-
 
         if (socialMedia && socialMediaUsername) {
             // Draw social media links
