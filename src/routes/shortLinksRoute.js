@@ -7,7 +7,6 @@ router.get('/', (req, res) => {
 
 import { fetchLongUrl } from '../utilities/database-functions.js';
 router.get('/:shortId', async (req, res) => {
-    console.log('\n' + "VOXELLI ❤️ SARCASTER" + '\n');
     const shortId_ = req.params.shortId;
     console.log('\n' + shortId_ + '\n');
     if (!shortId_) {
