@@ -14,7 +14,6 @@ app.use('/api', apiRoute);
 import shortLinksRoute from '../src/routes/shortLinksRoute.js';
 app.use('/c', shortLinksRoute);
 
-// Start the server
 app.listen(port, () => {
     console.log(`****************************`);
     console.log(`Made with 💓 by Prince Raj!`);
