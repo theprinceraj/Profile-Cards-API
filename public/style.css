@@ -82,6 +82,35 @@ label span {
     color: red;
 }
 
+#inputImageLinkLoaderContainer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+.loading {
+    height: 0;
+    width: 0;
+    padding: 15px;
+    border: 6px solid #ccc;
+    border-right-color: #308ade;
+    border-radius: 22px;
+    animation: rotate 1s infinite linear;
+    position: absolute;
+    left: 50%;
+    /* top: 50%; */
+}
+
+@-webkit-keyframes rotate {
+    /* 100% keyframe for  clockwise. 
+       use 0% instead for anticlockwise */
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 /* Media Query for screens smaller than 768px */
 @media (max-width: 760px) {
     .page-container {
