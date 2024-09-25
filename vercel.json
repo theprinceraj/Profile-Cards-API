@@ -1,11 +1,25 @@
 {
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api" },
-    { "source": "/c/(.*)", "destination": "/api" }
-  ],
-  "functions": {
-    "api/index.js": {
-      "includeFiles": "_template/**"
+    "rewrites": [
+        { "source": "/api/(.*)", "destination": "/api" },
+        { "source": "/c/(.*)", "destination": "/api" }
+    ],
+    "headers": [
+        {
+            "key": "Access-Control-Allow-Origin",
+            "value": "https://prince.is-a.dev"
+        },
+        {
+            "key": "Access-Control-Allow-Methods",
+            "value": "POST, GET, OPTIONS"
+        },
+        {
+            "key": "Access-Control-Allow-Headers",
+            "value": "Content-Type, Authorization"
+        }
+    ],
+    "functions": {
+        "api/index.js": {
+            "includeFiles": "_template/**"
+        }
     }
-  }
 }

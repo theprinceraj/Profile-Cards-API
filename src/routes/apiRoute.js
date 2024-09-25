@@ -1,6 +1,6 @@
 import express from "express";
 const router = express.Router();
-import cors from "cors";
+
 import profileController from "../controllers/profileController.js";
 import uploadsController from "../controllers/uploadsController.js";
 import shortLinksController from "../controllers/shortLinksController.js";
@@ -10,20 +10,11 @@ router.get("/", (req, res) => {
     res.send("API is running.");
 });
 
-let corsOptionProfile = {
-    origin: "*",
-    methods: ["GET"],
-    optionsSuccessStatus: 200,
-};
-router.get("/profile", cors(corsOptionProfile), profileController);
+// Define a route to render the profile card
+router.get("/profile", profileController);
 
-let corsOptionRestricted = {
-    origin: "https://prince.is-a.dev",
-    preflightContinue: false,
-    optionsSuccessStatus: 200,
-};
-router.post("/upload", cors(corsOptionRestricted), uploadsController);
+router.post("/upload", uploadsController);
 
-router.use("/shorten", cors(corsOptionRestricted), shortLinksController);
+router.use("/shorten", shortLinksController);
 
 export default router;
