@@ -10,11 +10,19 @@ router.get("/", (req, res) => {
     res.send("API is running.");
 });
 
-// Define a route to render the profile card
-router.get("/profile", cors(), profileController);
+let corsOptionProfile = {
+    origin: "*",
+    methods: ["GET"],
+    optionsSuccessStatus: 200,
+};
+router.get("/profile", cors(corsOptionProfile), profileController);
 
-router.post("/upload", uploadsController);
+let corsOptionRestricted = {
+    origin: "https://prince.is-a.dev",
+    optionsSuccessStatus: 200,
+};
+router.post("/upload", cors(corsOptionRestricted), uploadsController);
 
-router.use("/shorten", shortLinksController);
+router.use("/shorten", cors(corsOptionRestricted), shortLinksController);
 
 export default router;
