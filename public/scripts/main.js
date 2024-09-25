@@ -8,14 +8,17 @@ function updateImageSrc() {
         socialMedia = socialMediaInput.value.trim(),
         socialMediaUsername = socialMediaUsernameInput.value.trim();
 
-    let newSrc = '';
+    let newSrc = "";
     // Check if required fields are filled
     if (imageLink && name && location && title) {
         formFilledCorrectlyOnce = true;
         if (socialMedia && socialMediaUsername) {
-            newSrc = `https://profile-cards-api.vercel.app/api/profile?name=${name}&location=${location}&title=${title}&imageLink=${imageLink}&socialMedia=${socialMedia}&socialMediaUsername=${socialMediaUsername}`;
+            newSrc =
+                backendUrl +
+                `/api/profile?name=${name}&location=${location}&title=${title}&imageLink=${imageLink}&socialMedia=${socialMedia}&socialMediaUsername=${socialMediaUsername}`;
         } else {
-            newSrc = `https://profile-cards-api.vercel.app/api/profile?name=${name}&location=${location}&title=${title}&imageLink=${imageLink}`;
+            newSrc =
+                backendUrl + `/api/profile?name=${name}&location=${location}&title=${title}&imageLink=${imageLink}`;
         }
         profileImage.src = newSrc;
         currentLinkShortenedSuccessfully = false;
@@ -28,13 +31,8 @@ function updateImageSrc() {
 }
 const debounceUpdateImgSrc = () => {
     debounceFnCall(updateImageSrc, 1000);
-}
+};
 
-[
-    imageLinkInput,
-    nameInput,
-    locationInput,
-    titleInput,
-    socialMediaInput,
-    socialMediaUsernameInput
-].forEach(element => element.addEventListener('input', debounceUpdateImgSrc));
+[imageLinkInput, nameInput, locationInput, titleInput, socialMediaInput, socialMediaUsernameInput].forEach((element) =>
+    element.addEventListener("input", debounceUpdateImgSrc)
+);
