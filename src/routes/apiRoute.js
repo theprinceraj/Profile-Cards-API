@@ -19,6 +19,7 @@ router.get("/profile", cors(corsOptionProfile), profileController);
 
 let corsOptionRestricted = {
     origin: "https://prince.is-a.dev",
+    preflightContinue: false,
     optionsSuccessStatus: 200,
 };
 router.post("/upload", cors(corsOptionRestricted), uploadsController);
