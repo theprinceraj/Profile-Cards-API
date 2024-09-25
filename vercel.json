@@ -1,8 +1,11 @@
 {
     "rewrites": [
+        { "source": "/api/(.*)", "destination": "/api" },
+        { "source": "/c/(.*)", "destination": "/api" }
+    ],
+    "headers": [
         {
             "source": "/api/(.*)",
-            "destination": "/api",
             "headers": [
                 {
                     "key": "Access-Control-Allow-Origin",
@@ -17,10 +20,8 @@
                     "value": "Content-Type, Authorization"
                 }
             ]
-        },
-        { "source": "/c/(.*)", "destination": "/api" }
+        }
     ],
-
     "functions": {
         "api/index.js": {
             "includeFiles": "_template/**"
